@@ -1,0 +1,3 @@
+# ---+ Extensions
+# ---++ BridgePlugin
+1;

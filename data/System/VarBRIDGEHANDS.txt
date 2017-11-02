@@ -1,0 +1,14 @@
+%META:TOPICINFO{author="BramVanOosterhout" date="1509404393" format="1.1" version="1"}%
+---+ BRIDGEHANDS -- display the bridge hands in a deal
+Present the hands dealt in a table or around a board.
+
+---++ Parameters
+| *Parameter* | *Description* | *Default* |
+| =web= |The web where the topic describing the hand is stored. | BASEWEB |
+| =topic= |The topic where the description of the hand is stored. | BASETOPIC |
+| =displayBoard= |Boolean requesting the hands to be displayed around a board. | =off= |
+
+---++ Examples
+
+
+-- Main.BramVanOosterhout - 30 Oct 2017

@@ -1,0 +1,7 @@
+!noci
+data/System/BridgePlugin.txt 0644 Documentation page
+data/System/VarBRIDGEHANDS.txt 0644 Tag documentation
+data/Sandbox/PluginTestBridgePlugin.txt 0644 Examples
+lib/Foswiki/Plugins/BridgePlugin.pm 0444 Perl module
+lib/Foswiki/Plugins/BridgePlugin/Board.pm 0444 Perl module
+lib/Foswiki/Plugins/BridgePlugin/Config.spec 0444 Configuration
