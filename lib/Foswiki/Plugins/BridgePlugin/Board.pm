@@ -37,11 +37,17 @@ sub new {
     orderedSeats => [ "West", "North", "East", "South" ],
     orderedSuits => [ "Spades", "Hearts", "Diamonds", "Clubs" ],
     cardOrder => 'AKQJT98765432',
+    highCardPoints => {
+		   A => 4,
+		   K => 3,
+		   Q => 2,
+		   J => 1,
+	  },
     symbols => {
-           S => '%S%',     
-           H => '%H%',     
-           D => '%D%',     
-           C => '%C%',     
+           S => '<span style="font-size:130%; color: black;">&spades;</span>',     
+           H => '<span style="font-size:130%; color: red;">&hearts;</span>',     
+           D => '<span style="font-size:130%; color: red;">&diams;</span>',     
+           C => '<span style="font-size:130%; color: black;">&clubs;</span>',     
            N => 'NT',
            P => 'pass',
            A => 'all pass',
@@ -51,9 +57,8 @@ sub new {
   return $this;
 }
 
-
 ###############################################################################
-sub BRIDGEAUCTION {
+sub bridgeAuction {
   my ( $this, $params,$topicObject) = @_;
 
   $this->parseParams( $params );
@@ -62,7 +67,7 @@ sub BRIDGEAUCTION {
              unless $this->{thisWeb}.$this->{thisTopic} eq $this->{theDataWeb}.$this->{theDataTopic};
 
   my ( $dealer, $vul, $dealerSeatIndex, @bids ) = 
-                              $this->parseAuction( $topicObject->get( 'FIELD', 'Auction' )->{value} );
+                              $this->parseAuction(  $this->getFieldValue( $topicObject, 'Auction' ) );
 
   return $this->renderAuction( $dealerSeatIndex, @bids );
 
@@ -120,7 +125,6 @@ sub renderAuction {
   for ( ; $i <4; $i++ ) {
     $out .= "| ";
   }
-  $out .= "\n";
 
   return $out; 
 
@@ -160,18 +164,8 @@ sub renderAuctionPractice {
 sub renderAuctionRound {
   my ( $this, $i, $out, $seat, @bids ) = @_;
 
-  my %text = (
-           S => '%S%',     
-           H => '%H%',     
-           D => '%D%',     
-           C => '%C%',     
-           N => 'NT',
-           P => 'pass',
-           A => 'all pass',
-     );
-
   while (  ) {
-    $bids[$seat] =~ s!(S|H|D|C|N)!$text{$1}!;
+    $bids[$seat] =~ s!(S|H|D|C|N|P|A)!$this->{symbols}->{$1}!;
     $out .= $bids[$seat] . " | ";
     $i = ($i + 1)%4;
     if ( $i == 0 ) {
@@ -183,7 +177,7 @@ sub renderAuctionRound {
 }
 
 ###############################################################################
-sub BRIDGEPLAY {
+sub bridgePlay {
   my ($this, $params, $topicObject) = @_;
 
   $this->parseParams( $params );
@@ -202,7 +196,7 @@ sub BRIDGEPLAY {
   return $this->formatPlay( $this->rbn2pbn( $topicObject, $hands ) );
 }
 
-#######################################################################
+###############################################################################
 sub deal2rbn {
   my ( $this, @deal ) = @_;
 
@@ -226,7 +220,7 @@ sub deal2rbn {
   return $result;
 }
 
-#######################################################################
+###############################################################################
 sub completeDeal {
   my ( $this, @deal ) = @_;
 
@@ -277,8 +271,7 @@ sub completeDeal {
   return @deal;
 }
 
-
-#############################################################################
+###############################################################################
 sub placeCurrentDeal {
   my ( $this, $rbnDeal ) = @_;
   $rbnDeal =~ s!10!T!g;
@@ -413,7 +406,7 @@ ENDSCRIPT
   
  
 ###############################################################################
-sub BRIDGEHANDS {
+sub bridgeHands {
   my ($this, $params, $topicObject) = @_;
 
   $this->parseParams( $params );
@@ -423,7 +416,6 @@ sub BRIDGEHANDS {
 
   my ($handIndex, %hand, %cards);
 
-#  my @hands = split /:/, $topicObject->get( 'FIELD', 'Hands' )->{value} ;
   my @hands = split /:/, $this->getFieldValue( $topicObject, 'Hands' );
   my ( $firstHand ) = ( $hands[0] =~ m!\A\w\s+(\w)! );
 
@@ -435,6 +427,8 @@ sub BRIDGEHANDS {
   }
 
     while ( my ( $seat, $h ) = each %hand ) {
+
+     $cards{$seat}{value} = $this->handValue($h);
      my @suits = split /\./, $h;
      for ( my $i = 0; $i <= $#{$this->{orderedSuits}}; $i++ ) {
        $cards{$seat}{$this->{orderedSuits}[$i]} = $suits[$i] || "";
@@ -444,6 +438,18 @@ sub BRIDGEHANDS {
   return $this->formatHandsAsBoard( %cards ) if $this->{displayBoard};
   return $this->formatHandsTable( %cards );
 
+}
+
+###############################################################################
+sub handValue {
+	my ( $this, $hand ) = @_;
+	
+	my $value = 0;
+	foreach my $card ( split //, $hand ) {
+		$value += $this->{highCardPoints}->{$card} 
+		             if $this->{highCardPoints}->{$card};
+	}
+	return $value;	
 }
 
 ###############################################################################
@@ -465,19 +471,21 @@ use Try::Tiny;
 sub formatHandsTable {
   my ( $this, %cards ) = @_;
 
-  my @suitSymbols = qw( %S% %H% %D% %C% );
-  
   my $out = '| |';
   foreach my $seat ( @{$this->{orderedSeats}} ) {
     $out .= " $seat |";
   }
   $out .= "\n";
   foreach my $suit ( @{$this->{orderedSuits}} ) {
-    $out .= "| $suit |";
+    $out .= "| " . $this->{symbols}->{substr($suit,0,1)} . " |"; 
     foreach my $seat ( @{$this->{orderedSeats}} ) {
       $out .= " $cards{$seat}{$suit} |";
     }
     $out .= "\n";
+  }
+  $out .= "|HCP|";
+  foreach my $seat ( @{$this->{orderedSeats}} ) {
+    $out .= " $cards{$seat}{value} |";
   }
   return $out;
 }
@@ -486,7 +494,14 @@ sub formatHandsTable {
 sub formatHandsAsBoard {
   my ( $this, %cards ) = @_;
 
-  my $out = sprintf( "| |%s| |\n|%s| %s |%s|\n| |%s| |",
+  my @board = ( '<table>',
+                '<tr> <td></td><td>%s</td><td> </td></tr>',
+                '<tr><td>%s</td><td style="text-align: center; vertical-align: middle;"> %s </td><td>%s</td></tr>',
+                '<tr> <td></td><td>%s</td><td> </td></tr>',
+                '</table>'
+              );
+
+  my $out = sprintf( join('',@board),
                     $this->printHand('North', %cards),
                     $this->printHand('West', %cards),
                     $this->{displayBoard},
@@ -500,7 +515,7 @@ sub formatHandsAsBoard {
 sub printHand {
   my ($this, $seat, %cards ) = @_;
 
-  return '' if join('', (values %{$cards{$seat}}) ) eq '';
+  return '' if join('', (values %{$cards{$seat}}) ) eq '0';
 
   my $out;
   foreach my $suit( @{$this->{orderedSuits}} ) {
@@ -525,8 +540,6 @@ sub writeDebug {
 }
 
 ###############################################################################
-## parseParams will replace the parseRequestObject in due course, to unify 
-## treatment of parameter handling between MACRO and REST handlers
 sub parseParams {
   my ($this, $params) = @_;
 

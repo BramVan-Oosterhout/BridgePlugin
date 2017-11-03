@@ -1,0 +1,23 @@
+%META:TOPICINFO{author="BramVanOosterhout" comment="" date="1497159052" format="1.1" reprev="1" version="3"}%
+%META:TOPICPARENT{name="DataForm"}%
+| *Name:*| *Type:* | *Size:* | *Values:* | *Description:* | *Attributes:* | *Default:* |
+| TopicType | label | 1 | BridgeHand, WikiTopic | topic type  | | |
+| TopicTitle | text | 75 | | title | | |
+| Summary | text | 75 | | short description or tagline | | |
+| Board | text | 75 | |B: The board number | | |
+| Hands | text | 75 | |H: Description of the hands | | |
+| Auction | text | 75 | |A: Description of the auction | | |
+| ContractAndDeclarer | text | 75 | |C: Contract and Declarer | | |
+| Dealer | text | 10 | |Dealer if known. Duplicatets auction dealer | | |
+| Declarer | text | 10 | |Declarer if known. Duplicates auction declarer | | |
+| Contract | text | 10 | |Contract. Duplicates auction contract | | |
+| OpeningBid | text | 10 | |Opening bid. Duplicates auction opening bid | | |
+
+
+
+
+%META:FORM{name="Applications.DataForm"}%
+%META:FIELD{name="TopicType" title="TopicType" value="DataForm, ApplicationTopic, WikiTopic"}%
+%META:FIELD{name="TopicTitle" title="<nop>TopicTitle" value="Bridge hands data form"}%
+%META:FIELD{name="Summary" title="Summary" value="Fields for the recording of a bridge hand. Uses RBN with additional fields"}%
+%META:FIELD{name="WikiApplication" title="WikiApplication" value="BridgeApp"}%

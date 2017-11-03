@@ -1,0 +1,27 @@
+%META:TOPICINFO{author="BramVanOosterhout" date="1496990652" format="1.1" version="1"}%
+%META:TOPICPARENT{name="TopicTemplate"}%
+%TOC{depth="4"}%
+---++ Description
+...
+
+---++ Documentation
+---+++ Inheritance of TopicTypes
+%DBCALL{"Applications.RenderInheritanceGraph"}%
+%DBCALL{"Applications.RenderApplicationDocumentation" TYPE="TopicType"}%
+%DBCALL{"Applications.RenderApplicationDocumentation" TYPE="DataForm" NOTTYPE="TopicType"}%
+%DBCALL{"Applications.RenderApplicationDocumentation" TYPE="TopicTemplate"}%
+%DBCALL{"Applications.RenderApplicationDocumentation" TYPE="TopicView"}%
+%DBCALL{"Applications.RenderApplicationDocumentation" TYPE="TopicFunction"}%
+
+---++ Installation
+...
+
+---++ Manifest
+%DBCALL{"Applications.RenderApplicationManifest"}%
+
+%META:FORM{name="TopicTemplate"}%
+%META:FIELD{name="TopicType" title="TopicType" value="TopicTemplate, ApplicationTopic, WikiTopic"}%
+%META:FIELD{name="TopicTitle" title="<nop>TopicTitle" value=""}%
+%META:FIELD{name="Summary" title="Summary" value="TopicTemplate to generate a WikiApplication topic"}%
+%META:FIELD{name="ForTopicType" title="For TopicType" value="WikiApplication"}%
+%META:FIELD{name="WikiApplication" title="WikiApplication" value="WikiWorkbench"}%

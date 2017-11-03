@@ -1,0 +1,20 @@
+%META:TOPICINFO{author="BramVanOosterhout" date="1496990653" format="1.1" version="1"}%
+%META:TOPICPARENT{name="DocuTopic"}%
+This topic defines the list of application topics that must be represented in the data web supporting the instance of the application. The list is defined as a three column table:
+   * column 1: The name of the topic to be copied to the target data web. REQUIRED. A fully qualified =web.topicname= can be used.
+   * column 2: The name of the topic as it will be in the target data web. Default: the unqualified topicname in column 1.
+   * column 3; The way the topic is copied. =normal= or =stub=. Default: =normal=.
+
+The example below copies the topic =SeedWebHome= as a stub with topicname =WebHome= pointing to =SeedWebHome= in this Application. 
+
+<noautolink>
+| SeedWebHome | WebHome | stub |
+</noautolink>
+
+%DBCALL{"Applications.RenderApplicationDeployer"}%
+
+%META:FORM{name="Applications.DocuTopic"}%
+%META:FIELD{name="TopicType" title="TopicType" value="DocuTopic, ApplicationTopic, WikiTopic"}%
+%META:FIELD{name="TopicTitle" title="<nop>TopicTitle" value=""}%
+%META:FIELD{name="Summary" title="Summary" value="Prototype for the application DeploymentList"}%
+%META:FIELD{name="WikiApplication" title="WikiApplication" value="none"}%

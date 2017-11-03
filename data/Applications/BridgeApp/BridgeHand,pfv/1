@@ -1,0 +1,31 @@
+%META:TOPICINFO{author="BramVanOosterhout" comment="" date="1509343318" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="TopicType"}%
+%DBCALL{"Applications.RenderTopicInstaller" TEXT="Install '%TOPIC%' TopicType" TYPE="TopicType"}%
+
+---++ Documentation
+%STARTSECTION{"documentation"}%
+%RED%TODO%ENDCOLOR%
+
+%ENDSECTION{"documentation"}%
+
+---++ Topics of type '%TOPIC%'
+%STARTINCLUDE%
+%DBCALL{"Applications.RenderSimpleTopicCreator"
+  FORM="BridgeAppForm"
+  LABEL="%MAKETEXT{"Title"}%"
+  BUTTONTEXT="%MAKETEXT{"New"}%"
+  TEXT="%MAKETEXT{"Create a new [_1]" args="%TOPIC%"}%"
+  VALUE=""
+}%
+%STOPINCLUDE%
+
+
+%META:FORM{name="Applications.TopicType"}%
+%META:FIELD{name="TopicType" title="TopicType" value="TopicType, DataForm, DocuTopic, ApplicationTopic, WikiTopic"}%
+%META:FIELD{name="TopicTitle" title="<nop>TopicTitle" value=""}%
+%META:FIELD{name="Summary" title="Summary" value="Render a button that will create a new topic of type BridgeHand."}%
+%META:FIELD{name="Icon" title="Icon" value=""}%
+%META:FIELD{name="Editor" title="Editor" value=""}%
+%META:FIELD{name="Template" title="Template" value=""}%
+%META:FIELD{name="TopicNaming" title="Topic Naming" value=""}%
+%META:FIELD{name="WikiApplication" title="WikiApplication" value="BridgeApp"}%

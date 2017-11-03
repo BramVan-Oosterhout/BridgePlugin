@@ -170,9 +170,9 @@ sub initPlugin {
     # Register the _EXAMPLETAG function to handle %EXAMPLETAG{...}%
     # This will be called whenever %EXAMPLETAG% or %EXAMPLETAG{...}% is
     # seen in the topic text.
-    Foswiki::Func::registerTagHandler( 'BRIDGEHANDS', \&_BRIDGEHANDS );
-    Foswiki::Func::registerTagHandler( 'BRIDGEAUCTION', \&_BRIDGEAUCTION );
-    Foswiki::Func::registerTagHandler( 'BRIDGEPLAY', \&_BRIDGEPLAY );
+    Foswiki::Func::registerTagHandler( 'BRIDGEHANDS', \&_bridgeHands );
+    Foswiki::Func::registerTagHandler( 'BRIDGEAUCTION', \&_bridgeAuction );
+    Foswiki::Func::registerTagHandler( 'BRIDGEPLAY', \&_bridgePlay );
 
     # Allow a sub to be called from the REST interface
     # using the provided alias.  This example enables strong
@@ -192,39 +192,35 @@ sub initPlugin {
 }
 
 ################################################################################
-sub _BRIDGEPLAY {
+sub _bridgePlay {
     my($session, $params, $topic, $web, $topicObject) = @_;
 
     eval "require Foswiki::Plugins::BridgePlugin::Board";
     throw Error::Simple($@) if $@;
 
 
-    return Foswiki::Plugins::BridgePlugin::Board->new($session, $web, $topic)->BRIDGEPLAY( $params, $topicObject);
+    return Foswiki::Plugins::BridgePlugin::Board->new($session, $web, $topic)->bridgePlay( $params, $topicObject);
 }
 
 ################################################################################
-sub _BRIDGEHANDS {
+sub _bridgeHands {
     my($session, $params, $topic, $web, $topicObject) = @_;
 
     eval "require Foswiki::Plugins::BridgePlugin::Board";
     throw Error::Simple($@) if $@;
 
+    return Foswiki::Plugins::BridgePlugin::Board->new($session, $web, $topic)->bridgeHands( $params, $topicObject);
 
-    return Foswiki::Plugins::BridgePlugin::Board->new($session, $web, $topic)->BRIDGEHANDS( $params, $topicObject);
-
-#    eval "require Foswiki::Plugins::BridgePlugin::Core";
-#    throw Error::Simple($@) if $@;
-#    return Foswiki::Plugins::BridgePlugin::Core->BRIDGEHANDS($session, $params, $topic, $web, $topicObject);
 }
 
 ################################################################################
-sub _BRIDGEAUCTION {
+sub _bridgeAuction {
     my($session, $params, $topic, $web, $topicObject) = @_;
 
     eval "require Foswiki::Plugins::BridgePlugin::Board";
     throw Error::Simple($@) if $@;
 
-    return Foswiki::Plugins::BridgePlugin::Board->new($session, $web, $topic)->BRIDGEAUCTION( $params, $topicObject);
+    return Foswiki::Plugins::BridgePlugin::Board->new($session, $web, $topic)->bridgeAuction( $params, $topicObject);
 }
 
 
