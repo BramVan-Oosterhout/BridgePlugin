@@ -1,0 +1,67 @@
+%META:TOPICINFO{author="BramVanOosterhout" comment="" date="1509784518" format="1.1" reprev="2" version="2"}%
+%META:TOPICPARENT{name="TopicFunction"}%
+%TOC{depth="2"}%
+
+---++ Documentation
+%STARTSECTION{"documentation"}%
+The bridge hand navigator picks the previous and next topics from a list of topics and displays these as *<prev* and *next >* links. The list is created by a search for topics with a given Data form. A typical implementation is:
+<verbatim>
+%DBCALL{ "Applications/BridgeApp.RenderBridgeHandNavigator" myFORM="BridgeHandsDataForm" }%
+</verbatim>
+
+---+++++ Parameters
+   * myCURRENT - the current topic in the form web.topic. Default: BASEWEB.BASETOPIC.
+   * myFORM - the form topic that selects the topics in the list
+   * myWEB - the web to search in
+
+%ENDSECTION{"documentation"}%
+
+---++ Implementation
+<verbatim class="tml">
+%STARTINCLUDE%
+%INCLUDE{ "%TOPIC%" 
+        section="navigator" 
+        myCURRENT="%myCURRENT{ default="%BASEWEB%.%BASETOPIC%" }%" 
+        myTEXT="%SEARCH{ "form.name ~ '*.%myFORM%'" 
+                         type="query" 
+                         web="%myWEB{ default="%BASEWEB%" }%" 
+                         format="$web.$topic" 
+                         separator="," 
+                         nonoise="on"
+               }%" 
+}%
+%STOPINCLUDE%
+</verbatim>
+---+++ navigator
+<verbatim>
+%STARTSECTION{ "navigator" }%
+<div>
+  <div style="float:left">
+%EXTRACT{ text="%myTEXT%" 
+   pattern="([^,]*),%myCURRENT%"
+   format="[[$1][< previous]]"
+}%
+  </div><div style="float:right">
+%EXTRACT{ text="%myTEXT%" 
+   pattern="%myCURRENT%,([^,]*)"
+   format="[[$1][next >]]"
+}%
+  </div>
+</div>
+<div style="clear:both;" ></div>
+%ENDSECTION{ "navigator" }%
+</verbatim>
+
+---++ Test
+<verbatim>
+%STARTSECTION{ "test" }%
+%DBCALL{"%TOPIC%" myFORM="TopicStub" myCURRENT="Applications/BridgeApp.TopicTemplate" }%
+%ENDSECTION{ "test" }%
+</verbatim>
+%INCLUDE{ "%TOPIC%" section="test" }%
+
+%META:FORM{name="Applications.TopicFunction"}%
+%META:FIELD{name="TopicType" title="TopicType" value="TopicFunction, DocuTopic, ApplicationTopic, WikiTopic"}%
+%META:FIELD{name="TopicTitle" title="<nop>TopicTitle" value=""}%
+%META:FIELD{name="Summary" title="Summary" value="A simple next/previous navigation tool"}%
+%META:FIELD{name="WikiApplication" title="WikiApplication" value="WikiWorkbench"}%

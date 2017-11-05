@@ -1,0 +1,54 @@
+%META:TOPICINFO{author="BramVanOosterhout" date="1509755805" format="1.1" version="1"}%
+%META:TOPICPARENT{name="TopicFunction"}%
+%TOC{depth="2"}%
+
+---++ Documentation
+%STARTSECTION{"documentation"}%
+Hoe page for the bridge application
+
+---+++++ Parameters
+   * Nil
+
+%ENDSECTION{"documentation"}%
+
+---++ Implementation
+<verbatim class="tml">
+%STARTINCLUDE%
+---+!! %MAKETEXT{"Welcome to the [_1] web" args="<nop>%WEB%"}%%IF{"$WEBSUMMARY != ''" then="
+---++!! %WEBSUMMARY%"}%
+
+%DBCALL{ "Applications/BridgeApp.BridgeHand" }%
+
+This web contains a collection of bridge hands played at various clubs. Each hand is displayed on its own page. New hands can be created one by one, using the _New_ button.
+
+New hands can be uploaded as a file. A single file may contain multiple hands. 
+
+[[Load hands][Upload more hands]].
+
+%DATATABLE{
+  class="foswikiFlatTable foswikiStripes"
+  query="%IF{"'%URLPARAM{"q"}%'!=''" then="TopicType=~'%URLPARAM{"q"}%'" else="TopicType=~'BridgeHand'"}%"
+  connector="dbcache"
+  web="%BASEWEB%"
+  columns="index,TopicTitle,Dealer,OpeningBid,Declarer,Contract,TopicType,Changed"
+  rows="10"
+  searching="on"
+  lengthmenu="5,10,20,30,50,100"
+  info="off"
+  paging="on"
+  sort="Changed"
+  reverse="on"
+  width="100%"
+}%
+%STOPINCLUDE%
+</verbatim>
+
+---++ Test
+%DBCALL{"%TOPIC%"}%
+
+
+%META:FORM{name="Applications.TopicFunction"}%
+%META:FIELD{name="TopicType" title="TopicType" value="WikiTopic"}%
+%META:FIELD{name="TopicTitle" title="<nop>TopicTitle" value=""}%
+%META:FIELD{name="Summary" title="Summary" value="Home page for the bridge hands web site"}%
+%META:FIELD{name="WikiApplication" title="WikiApplication" value="WikiWorkbench"}%

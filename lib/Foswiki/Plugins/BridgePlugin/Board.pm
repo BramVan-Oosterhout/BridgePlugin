@@ -186,19 +186,22 @@ sub bridgePlay {
              unless $this->{thisWeb}.$this->{thisTopic} eq $this->{theDataWeb}.$this->{theDataTopic};
 
   my $hands = $this->getFieldValue( $topicObject, 'Hands' ) if $this->{theDeal} ne 'new' ;
+   
+  my $dealer = substr( $hands, 2, 1) if $hands;
+  $dealer = $this->{orderedSeats}[int(rand(4))] unless $dealer;
   my @deal = ();
   if ( $this->{theDeal} ne 'full' ) { 
     @deal =  $this->placeCurrentDeal( $hands ) unless $this->{theDeal} eq 'new';
     @deal = $this->completeDeal( @deal );
-    $hands = $this->deal2rbn( @deal );
+    $hands = $this->deal2rbn( $dealer, @deal );
   }
-
+  
   return $this->formatPlay( $this->rbn2pbn( $topicObject, $hands ) );
 }
 
 ###############################################################################
 sub deal2rbn {
-  my ( $this, @deal ) = @_;
+  my ( $this, $dealer, @deal ) = @_;
 
   my %hands = ();
   my $dealIndex = 0;
@@ -212,11 +215,10 @@ sub deal2rbn {
     }
   }
 
-  my $result = 'H N';
+  my $result = "H $dealer";
   foreach my $seat ( @{$this->{orderedSeats}} ) {
     $result .= ':' . $hands{ $seat };
   }
-  $result =~ s/T/10/g;
   return $result;
 }
 
@@ -256,17 +258,6 @@ sub completeDeal {
     $deal[ $i ] = $seatList[ $j ];
     $j++;
   }
-#print "\n=== Complete deal: ". join( "+", @deal );
-
-#  for ( my $i = 0; $i < 13 * 4; $i++ ) {
-#    for ( my $j = 0; $j <= $#seats; $j++ ) {
-#      splice ( @seats, $j, 1 ) if $seatCount{ $seats[ $j ] } >= 13;
-#    }
-#    if ( ! $deal[ $i ] ) {
-#      $deal[$i] = $seats[ int(rand( 1+$#seats )) ];
-#      $seatCount{$deal[$i]}++;
-#    }
-#  }
 
   return @deal;
 }
@@ -274,7 +265,6 @@ sub completeDeal {
 ###############################################################################
 sub placeCurrentDeal {
   my ( $this, $rbnDeal ) = @_;
-  $rbnDeal =~ s!10!T!g;
 
   my %hashCardOrder = ();
   my @rbnDeal = ();
@@ -303,13 +293,13 @@ sub placeCurrentDeal {
       $suitIndex = 0;
       $suit = $this->{orderedSuits}[ $suitIndex ];
       $seatIndex = ($seatIndex + 1) % 4; 
-      $seat = $this->{orderredSeats}[ $seatIndex ];
+      $seat = $this->{orderedSeats}[ $seatIndex ];
     } else {
       $deal[ $hashCardOrder{$ch} + 13*$suitIndex ] = $seat;
     } 
   } 
-
-  return @deal;
+  
+  return map { $_ ? $_ : '' } @deal;
 }
  
 ###############################################################################
@@ -544,7 +534,7 @@ sub parseParams {
   my ($this, $params) = @_;
 
   my $query    = Foswiki::Func::getRequestObject();
-  $this->{practiceAuctionRound}   = ( $query->param('par') =~ m!(\d+)! ) ? $query->param('par') : undef; 
+  $this->{practiceAuctionRound}   = ( $query->param('par') && $query->param('par') =~ m!(\d+)! ) ? $query->param('par') : undef; 
 
   $this->{debug} = Foswiki::Func::isTrue(scalar $params->{debug}, $this->{debug})
     unless defined $this->{debug};
@@ -560,15 +550,55 @@ sub parseParams {
     throw Error::Simple("Topic: ".$this->{theDataWeb}.".".$this->{theDataTopic}." does not exist")
         unless $this->{theDataTopic} eq '' || Foswiki::Func::topicExists( $this->{theDataWeb}, $this->{theDataTopic} );
 
-  $this->{theAuctionRounds} = ( $params->{rounds} =~ m!\A(\d+|practice)\Z!i ) ? lc( $params->{rounds} ) : '';
+  $this->{theAuctionRounds} = ( $params->{rounds} && $params->{rounds} =~ m!\A(\d+|practice)\Z!i ) ? lc( $params->{rounds} ) : '';
 
-  $this->{displayBoard} = $params->{board};
+ # $this->{displayBoard} = $params->{board};
+   $this->{displayBoard} = validateBoard( $this->{theDataWeb},
+                                        "$Foswiki::cfg{SystemWebName}\.BridgePlugin",
+                                        $params->{board}
+                                       ); 
+  #if ( foswiki::isTrue($params->{board}) ) {
+  #	  $this->{displayBoard} = $params->{board} eq 'on' ? DEFAULT : $params->{board};
+  # check existence
+  #} 
 
-  $this->{theDeal} = ($params->{deal} =~ m!\A(full|partial|new)\Z!i ) ? $params->{deal} : 'full';
-  $this->{theScale} = ($params->{zoom} =~ m!\A\d*\.\d*\Z! ) ? $params->{zoom} : 1.0;
+  $this->{theDeal} = ( $params->{deal} && $params->{deal} =~ m!\A(full|partial|new)\Z!i ) ? $params->{deal} : 'full';
+  $this->{theScale} = ( $params->{zoom} && $params->{zoom} =~ m!\A\d*\.\d*\Z! ) ? $params->{zoom} : 1.0;
 
 
   return $this;
+}
+
+sub validateBoard {
+  my ( $defaultweb, $fulltopic, $board ) = @_;
+
+  my $defaultBoard = sprintf ("%s%s/%s/%s/%s", $Foswiki::cfg{DefaultUrlHost}, 
+                                        $Foswiki::cfg{PubUrlPath}, 
+                                        $Foswiki::cfg{SystemWebName},
+                                        "BridgePlugin", 
+                                        "bridgeboard.gif" 
+                            );
+  my $validBoard;
+  if ( $board && $board eq 'on' ) { $validBoard = $defaultBoard }
+  elsif ( $board && ($board =~ m!\Ahttp! ) ) { $validBoard = $board } ### http://host/path/file
+  elsif ( $board && !($board =~ m!/!) ) { $validBoard = "$fulltopic/$board" } ### file
+  elsif ( $board && ($board =~ m!\A[^/.]+/[^/]+\Z! ) ) { $validBoard = "$defaultweb\.$board" }  ### topic/file
+  elsif ( $board ) { $validBoard = $board } ### web.topic/file OR web/subweb.topic/file
+  else { return '' } ### empty 
+
+
+  if ( $validBoard =~ m!\Ahttp! ) { return $validBoard }
+  else {
+    my ( $attWeb, $attTopic, $attFile ) = ( $validBoard =~ m!\A([^\.]+)\.([^/]+)/([^/]+)\Z! );
+    if ( Foswiki::Func::attachmentExists( $attWeb, $attTopic, $attFile ) ){
+      $validBoard = sprintf( "%s%s/%s/%s/%s", $Foswiki::cfg{DefaultUrlHost}, 
+                                        $Foswiki::cfg{PubUrlPath}, 
+                                        $attWeb, $attTopic, $attFile );
+    }
+    else { $validBoard = $defaultBoard }
+  }
+
+  return $validBoard;
 }
 
 

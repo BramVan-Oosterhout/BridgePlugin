@@ -1,0 +1,67 @@
+%META:TOPICINFO{author="BramVanOosterhout" comment="rename" date="1509777424" format="1.1" reprev="1" version="2"}%
+%META:TOPICPARENT{name="TopicView"}%
+%{<verbatim class="tml">}%
+%TMPL:INCLUDE{"view"}%
+%{</verbatim>}%
+%{<verbatim class="tml">}%
+%TMPL:DEF{"content"}%%TMPL:P{"simpleheader"}%
+%TEXT% 
+%TABPANE%
+ %TAB{ "The cards" }%
+  %BRIDGEHANDS{ displayBoard="on" }%
+ %ENDTAB%
+ %TAB{ "Practice the auction"}%
+<div class="bridge">
+  <div class="bridge-row">
+     <div class="bridge-hands">
+ %BRIDGEHANDS{ displayBoard="on" }%
+      </div>
+     <div class="bridge-auction">
+%BRIDGEAUCTION%
+      </div>
+  </div>
+</div> 
+%ENDTAB%
+%TAB{"Play this hand}%
+%BRIDGEPLAY{ deal="partial" zoom="0.5" }%
+%ENDTAB%
+%DBCALL{ "Applications/BridgeApp.RenderBridgeHandNavigator" myFORM="BridgeHandsDataForm" }%
+%ENDTABPANE%
+%TMPL:END%
+%{</verbatim>}%
+%{<verbatim class="tml">}%
+%TMPL:DEF{"templatestyle"}%
+<style type="text/css">
+.bridge {
+  display: table;         
+  width: 600px;         
+  background-color: #eee;         
+  border: 1px solid #666666;         
+  border-spacing: 25px; /* cellspacing:poor IE support for  this */
+}
+.bridge-row {
+  display: table-row;
+  width: 1000px;
+  clear: both;
+}
+.bridge-hands {
+  float: left; /* fix for  buggy browsers */
+  display: table-column;         
+  width: auto;   
+  background-color: #eee;  
+}
+.bridge-auction {
+  float: right; /* fix for  buggy browsers */
+  display: table-column;         
+  width: auto;  
+  background-color: #eee;  
+}
+</style>  %IF{"$raw='on'" then='%TMPL:P{"sig_textareabuttons"}%'}%%TMPL:END%
+%{</verbatim>}%
+
+%META:FORM{name="Applications.TopicView"}%
+%META:FIELD{name="TopicType" title="TopicType" value="TopicView, ApplicationTopic, WikiTopic"}%
+%META:FIELD{name="TopicTitle" title="<nop>TopicTitle" value=""}%
+%META:FIELD{name="Summary" title="Summary" value="The view template showing a bridge hand"}%
+%META:FIELD{name="WikiApplication" title="WikiApplication" value="BridgeApp"}%
+%META:TOPICMOVED{by="BramVanOosterhout" date="1509766377" from="Applications/BridgeApp.BridgeHandViewTemplate" to="Applications/BridgeApp.BridgeHandsDataViewTemplate"}%
