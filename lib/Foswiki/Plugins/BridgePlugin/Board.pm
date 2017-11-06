@@ -97,7 +97,7 @@ sub findSeatIndex {
   my ( $this, $seat ) = @_;
 
   for ( my $i = 0; $i <= $#{$this->{orderedSeats}}; $i++ ) {
-     return $i if ($this->{orderedSeats}[$i] =~ m!($seat)!);
+     return $i if ( $this->{orderedSeats}[$i] =~ m!($seat)!);
   }
   return undef;
 }
@@ -239,14 +239,14 @@ sub completeDeal {
 
 ##### populate the seatList
   my @seatList = ();
-  foreach my $j ( 0 ..3 ) {
+  foreach my $j ( 0 .. 3 ) {
     for ( my $i = $seatCount{$seats[$j]}; $i <13; $i++ ) {
       push @seatList, $seats[$j];
     }
   }
 #print "\n=== Populated seatList: ".join( "+", @seatList);
 ####shuffle the seatlist
-  for ( my $i = $#seatList; $i; $i-- ) {
+  for ( my $i = $#seatList; $i >= 0; $i-- ) {
     my $j = int(rand($i+1));
     @seatList[$i,$j] = @seatList[$j,$i];
   }

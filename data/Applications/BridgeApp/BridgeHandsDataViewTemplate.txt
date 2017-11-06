@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="BramVanOosterhout" comment="rename" date="1509777424" format="1.1" reprev="1" version="2"}%
+%META:TOPICINFO{author="BramVanOosterhout" comment="" date="1509957247" format="1.1" reprev="3" version="3"}%
 %META:TOPICPARENT{name="TopicView"}%
 %{<verbatim class="tml">}%
 %TMPL:INCLUDE{"view"}%
@@ -8,21 +8,21 @@
 %TEXT% 
 %TABPANE%
  %TAB{ "The cards" }%
-  %BRIDGEHANDS{ displayBoard="on" }%
+  %BRIDGEHANDS%
  %ENDTAB%
- %TAB{ "Practice the auction"}%
+ %TAB{ "Practice the auction" }%
 <div class="bridge">
   <div class="bridge-row">
      <div class="bridge-hands">
- %BRIDGEHANDS{ displayBoard="on" }%
+ %BRIDGEHANDS{ board="on" }%
       </div>
      <div class="bridge-auction">
-%BRIDGEAUCTION%
+%BRIDGEAUCTION{ rounds="practice" }%
       </div>
   </div>
 </div> 
 %ENDTAB%
-%TAB{"Play this hand}%
+%TAB{ "Play this hand" }%
 %BRIDGEPLAY{ deal="partial" zoom="0.5" }%
 %ENDTAB%
 %DBCALL{ "Applications/BridgeApp.RenderBridgeHandNavigator" myFORM="BridgeHandsDataForm" }%

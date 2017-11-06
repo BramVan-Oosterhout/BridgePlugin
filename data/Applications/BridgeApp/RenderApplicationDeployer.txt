@@ -1,0 +1,85 @@
+%META:TOPICINFO{author="BramVanOosterhout" comment="" date="1509953116" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="TopicFunction"}%
+%DBCALL{"Applications.RenderTopicInstaller" TYPE="TopicType" PARENT="TopicType"}%
+
+%TOC{depth="2"}%
+
+---++ Documentation
+%STARTSECTION{"documentation"}%
+This function renders a button, that will invoke a =copy= function, creating the storage web with topics supporting a given application defined in the !DeploymentList. The !DeploymentList contains a table with three columns: 
+   1 The topic to be copied (required)
+   2 The topic name of the topic to be created 
+   3 The type of topic: normal (default) or stub
+
+the function is similar to Applications.RenderTopicInstaller
+
+---+++++ Parameters
+   * theDEPLOYMENTLIST - the topic that contains the list of topics to be deployed for the application. Default: %INCLUDINGWEB%.DeploymentList
+   * theWEBTEMPLATE - the web template used as a base for the application. Default: _default
+   * switchONLYNEW - only application topics that do not already exist in the deployment web are created. Default: off.
+   * switchFORCENEWREVISION - each application topic will be created as a new revision in the deployment web. Default: on.
+
+%ENDSECTION{"documentation"}%
+
+---++ Implementation
+<verbatim class="tml">
+%STARTINCLUDE%
+<noautolink>
+We will copy the following elements:
+   * The deployment list is: %theDEPLOYMENTLIST{ default="%BASEWEB%.DeploymentList" }%
+   * source: %INCLUDE{ "%TOPIC%" section="readdeploymentlist" }%
+</noautolink>
+
+%TWISTY{
+  mode="div"
+  link="%BUTTON{"%MAKETEXT{"Deploy"}%" icon="application_add"}%%CLEAR%"
+}%
+
+<form id="applicationdeployer" action="%SCRIPTURLPATH{"copy"}%/%BASEWEB%/%BASETOPIC%" method="post">
+ <div class="foswikiFormSteps">
+  <h2 >%IF{"defined TEXT" then="$percntTEXT$percnt" else="%MAKETEXT{"Deploy %INCLUDINGWEB%"}%"}%</h2>
+  <input type="hidden" name="mode" value="application" />
+  <input type="hidden" name="source" value="%INCLUDE{ "%TOPIC%" section="readdeploymentlist" }%" />
+  <input type="hidden" name="template" value="%theWEBTEMPLATE{ default="_default" }%" />
+  <input type="hidden" name="debug" value="on" />
+  <input type="hidden" name="onlynew" value="%switchONLYNEW{ default="off" }%" />
+  <input type="hidden" name="forcenewrevision" value="%switchFORCENEWREVISION{ default="on" }%" />
+  <div class="foswikiFormDescription">
+    %MAKETEXT{"Select a web in which to deploy this application."}%
+      <input type="text" name="destination" value="Testweb" />
+  </div>
+ </div>
+ <div class="foswikiFormStep">
+  %BUTTON{"%MAKETEXT{"Submit"}%" icon="tick" type="save"}% 
+  %CLEAR%
+ </div>
+</form>
+%ENDTWISTY%
+%STOPINCLUDE%
+</verbatim>
+
+---+++ readdeploymentlist
+Read the manifest topic and extract the copy instructions in the correct format.
+   * %INCLUDE{ "%TOPIC%" section="readdeploymentlist" }%
+---
+<verbatim>
+%STARTSECTION{ "readdeploymentlist" }%%EXTRACT{ 
+  topic="%theDEPLOYMENTLIST{ default="%BASEWEB%.DeploymentList" }%"
+  pattern="$\s*\|\s*([\.\/\w]+)\s*\|\s*(\w+)?\s*\|\s*(\w+)?\s*\|"
+  format="$1 "
+        +"$percentIF{ \"'$2'!=''\" then=\"=&gt; $2\"}$percent "
+        +"$percentIF{ \"'$3'!=''\" then=\"[$3]\"}$percent, "
+  expand="off"
+}%%ENDSECTION{ "readdeploymentlist" }%
+</verbatim>
+
+---++ Test
+%DBCALL{"%TOPIC%" }%
+
+
+%META:FORM{name="Applications.TopicFunction"}%
+%META:FIELD{name="TopicType" title="TopicType" value="TopicFunction, DocuTopic, ApplicationTopic, WikiTopic"}%
+%META:FIELD{name="TopicTitle" title="<nop>TopicTitle" value=""}%
+%META:FIELD{name="Summary" title="Summary" value="Present a user interface to deploy an application to a new web"}%
+%META:FIELD{name="WikiApplication" title="WikiApplication" value="WikiWorkbench"}%
+%META:TOPICMOVED{by="BramVanOosterhout" date="1509953116" from="Applications.RenderApplicationDeployerCopy" to="Applications/BridgeApp.RenderApplicationDeployer"}%
