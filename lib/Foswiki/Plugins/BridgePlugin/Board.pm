@@ -76,7 +76,7 @@ sub bridgeAuction {
 ###############################################################################
 sub parseAuction {
   my ( $this, $auctionRecord ) = @_;
- #A S?:2DP2NP:3HP3NP:PP 
+ # Typical:A S?:2DP2NP:3HP3NP:PP 
 
   my @bids = ();
 
@@ -346,27 +346,44 @@ sub formatPlay {
      $pbnBoardFormat .= q('[Vulnerable "%s"]' + '\n' +) . "\n";
      $pbnBoardFormat .= q('[Deal "%s"]');
   my $pbnBoard = sprintf( $pbnBoardFormat, $board, $dealer, $vul, $deal ); 
-
-## <style>
-## #wrap { width: 600px; height: 390px; padding: 0; overflow: hidden; }
-## #thePlayTarget { width: 800px; height: 520px; border: 1px solid black; }
-## #thePlayTarget { zoom: 0.75; -moz-transform: scale(0.75); -moz-transform-origin: 0 0; }
-## </style>
+  
+## Scaling:  
+## Ref: http://carsonfarmer.com/2012/08/cross-browser-iframe-scaling/
+##  which recommends against zoom.
 ## Ref: https://www.w3schools.com/css/css3_2dtransforms.asp
+  my $zoomStyle = <<ENDZOOMSTYLE;
+<style>
+#wrap { width: 600px; height: 390px; padding: 0; overflow: hidden; }
+#thePlayTarget { width: 800px; height: 520px; border: 1px solid black; }
+#thePlayTarget {  
+    -ms-zoom: $this->{theScale};
+    -ms-transform-origin: 0 0;
+    -moz-transform: scale($this->{theScale});
+    -moz-transform-origin: 0px 50px;
+    -o-transform: scale($this->{theScale});
+    -o-transform-origin: 0px 50px;
+    -webkit-transform: scale($this->{theScale});
+    -webkit-transform-origin: 0 0;
+}
+</style>
+ENDZOOMSTYLE
+
+Foswiki::Func::addToZone(  'head', 'BridgePlugin_zoomStyle', $zoomStyle );
 
   my $out = '<iframe id="thePlayTarget" width="830px" height="490px"></iframe>';
   $out .= "\n";
-  $out .= << 'ENDSCRIPT';
+
+  my $playTargetScript = sprintf <<'PLAYTARGETSCRIPT', $pbnBoard;
 <script>
   var formData = new FormData();
-  var content = #PBN_FILE_CONTENT#; // the body of the new file...
+  var content = %s; // the body of the new file...
   var blob = new Blob([content], { type: "text/plain"});
 
   formData.append( "fileToUpload", blob, "somename.pbn" )
 
   formData.append("event",0);
 
-      $.ajax({
+      $.ajax({            
           url: 'http://mirgo2.co.uk/bridgesolver/upload_file.php',
           type: 'POST',
           data: formData,
@@ -386,15 +403,12 @@ document.getElementById('thePlayTarget').setAttribute( 'src', myResult[2] + myRe
               alert("error in ajax form submission");
           }
       });
-</script>
-ENDSCRIPT
+</script>  
+PLAYTARGETSCRIPT
 
-  $out =~ s!#PBN_FILE_CONTENT#!$pbnBoard!;
-
-  return $out;
+  return $out . $playTargetScript;
 }
   
- 
 ###############################################################################
 sub bridgeHands {
   my ($this, $params, $topicObject) = @_;
@@ -552,15 +566,10 @@ sub parseParams {
 
   $this->{theAuctionRounds} = ( $params->{rounds} && $params->{rounds} =~ m!\A(\d+|practice)\Z!i ) ? lc( $params->{rounds} ) : '';
 
- # $this->{displayBoard} = $params->{board};
    $this->{displayBoard} = validateBoard( $this->{theDataWeb},
                                         "$Foswiki::cfg{SystemWebName}\.BridgePlugin",
                                         $params->{board}
-                                       ); 
-  #if ( foswiki::isTrue($params->{board}) ) {
-  #	  $this->{displayBoard} = $params->{board} eq 'on' ? DEFAULT : $params->{board};
-  # check existence
-  #} 
+                                        );
 
   $this->{theDeal} = ( $params->{deal} && $params->{deal} =~ m!\A(full|partial|new)\Z!i ) ? $params->{deal} : 'full';
   $this->{theScale} = ( $params->{zoom} && $params->{zoom} =~ m!\A\d*\.\d*\Z! ) ? $params->{zoom} : 1.0;
