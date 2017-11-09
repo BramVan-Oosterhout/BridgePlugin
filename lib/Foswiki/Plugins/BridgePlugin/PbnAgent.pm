@@ -23,16 +23,16 @@ use Data::Dump qw(dump);
 
 ###############################################################################
 sub new {
-  my ($class, $session) = @_;
+  my ($class, $agentType) = @_;
 
   my $className = $class;
   $className =~ s/^.*:://;
 
   my $this = bless({
     className => $className,
-    session => $session,
-    baseWeb => $session->{webName},
-    baseTopic => $session->{topicName},
+#    session => $session,
+#    baseWeb => $session->{webName},
+#    baseTopic => $session->{topicName},
   }, $class);
 
   return $this;
