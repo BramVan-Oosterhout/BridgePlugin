@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="BramVanOosterhout" comment="" date="1509954816" format="1.1" reprev="1" version="1"}%
+%META:TOPICINFO{author="BramVanOosterhout" comment="" date="1510204767" format="1.1" reprev="3" version="3"}%
 %META:TOPICPARENT{name="WebHome"}%
 ---+ Load more hands
 Hands are stored using Richard's Bridge Notation (*[[http://www.rpbridge.net/7a12.htm][rbn]]*).
@@ -9,7 +9,7 @@ Hands can be collected in one of two formats:
 To upload a file, attach the file to a topic. Then, below, provide the web.topic name of that topic as the topic. Provide the name of the attachment as the file. Select the target web and Select the type of the attached file (text or pbn). Press submit to perform the upload.
 
 %IF{ "context TopicImportExportPluginEnabled" 
-     then="$percentDBCALL{ \"Applications/ImportExportApp.RenderTopicImport\" }$percent" 
+     then="$percentDBCALL{ \"Applications/ImportExportApp.RenderTopicImport\" FORM=\"Applications/BridgeApp.BridgeHandsDataForm\" }$percent" 
      else="%RED%This function requires TopicImportExportPlugin.%ENDCOLOR%<br />TopicImportExportPlugin has not been enabled!" 
 }%
 

@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="BramVanOosterhout" comment="" date="1509784518" format="1.1" reprev="2" version="2"}%
+%META:TOPICINFO{author="BramVanOosterhout" comment="" date="1510207092" format="1.1" reprev="3" version="3"}%
 %META:TOPICPARENT{name="TopicFunction"}%
 %TOC{depth="2"}%
 
@@ -38,12 +38,12 @@ The bridge hand navigator picks the previous and next topics from a list of topi
 <div>
   <div style="float:left">
 %EXTRACT{ text="%myTEXT%" 
-   pattern="([^,]*),%myCURRENT%"
+   pattern="([^,]*),[^,]*%myCURRENT%\b"
    format="[[$1][< previous]]"
 }%
   </div><div style="float:right">
 %EXTRACT{ text="%myTEXT%" 
-   pattern="%myCURRENT%,([^,]*)"
+   pattern="[^,]*%myCURRENT%,([^,]*)"
    format="[[$1][next >]]"
 }%
   </div>

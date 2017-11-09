@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="BramVanOosterhout" comment="" date="1509955591" format="1.1" version="2"}%
+%META:TOPICINFO{author="BramVanOosterhout" comment="" date="1510202062" format="1.1" version="3"}%
 %META:TOPICPARENT{name="DocuTopic"}%
 This topic defines the list of application topics that must be represented in the data web supporting the instance of the application. The list is defined as a three column table:
    * column 1: The name of the topic to be copied to the target data web. REQUIRED. A fully qualified =web.topicname= can be used.
@@ -13,7 +13,7 @@ The example below copies the topic =SeedWebHome= as a stub with topicname =WebHo
 
 </noautolink>
 
-%DBCALL{"Applications.RenderApplicationDeployer"}%
+%DBCALL{"Applications/BridgeApp.RenderApplicationDeployer"}%
 
 %META:FORM{name="Applications.DocuTopic"}%
 %META:FIELD{name="TopicType" title="TopicType" value="DocuTopic, ApplicationTopic, WikiTopic"}%
