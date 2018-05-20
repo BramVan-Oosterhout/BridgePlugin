@@ -1,0 +1,63 @@
+%META:TOPICINFO{author="BramVanOosterhout" date="1526304674" format="1.1" version="1"}%
+%META:TOPICPARENT{name="DocuTopic"}%
+%STARTSECTION{"documentation"}%
+<!-- documentation written in here will be included by CompleteDocumentation -->
+%ENDSECTION{"documentation"}%
+
+<!-- documentation written in here will NOT be included by CompleteDocumentation -->
+---++ Trace of the requests and response of the current system
+---+++ Accessing mirgo2.co.uk
+   * Request: GET https://mirgo2.co.uk/bridgesolver/upload.htm
+   * Response: The empty window and an opportunity to select a file (No file selected)
+
+---+++ Get the chrome message in the iframe:
+   * &lt;iframe ... src="chromeNotice.htm?ver=2" >&lt;/iframe>
+   * Request: http://mirgo2.co.uk/bridgesolver/chromeNotice.htm?ver=2
+   * Response: the help text for the chrome browser extension
+
+---+++ Select an input file and upload it
+   * Request: POST http://mirgo2.co.uk/bridgesolver/upload_file.php
+      * parameters: The content of the selected file under the hearder:Content-Disposition: form-data; name="fileToUpload"; filename="Board1-BothVul.pbn"   
+   * Response: the following html with javascript 
+<verbatim>
+<script language="JavaScript" type="text/JavaScript">
+var filename="//mirgo2.co.uk/bridgesolver/uploads/5af988c403f778.07846477.pbn";
+</script>
+<body>
+<script language="JavaScript" type="text/JavaScript">
+    g_protocol = location.protocol  || 'http:';
+	
+    if (g_protocol != 'https:')
+    {
+        g_protocol = 'http:';
+    }
+
+location.replace(g_protocol+"//dds.bridgewebs.com/bsol2/ddummy.htm?club=bsol_site&file=" + g_protocol + filename);</script>
+</body>
+</verbatim>
+
+---+++ Load the content of the iframe and display the board
+   * Request: GET http://dds.bridgewebs.com/bsol2/ddummy.htm?club=bsol_site&file=http://mirgo2.co.uk/bridgesolver/uploads/5af988c403f778.07846477.pbn
+   * Response: content of the iframe and javascript
+
+---+++ Load jquery
+   * Request: GET http://dds.bridgewebs.com/bsol2/jquery-1.10.2.js
+   * Response: the script
+
+---+++ Load the double dummy script
+   * Request: GET http://dds.bridgewebs.com/bsol2/ddummy2.js?ver=50
+   * Response: The script
+
+---+++ Load the json script
+   * Request: GET http://dds.bridgewebs.com/bsol2/json2.js
+   * Response: the script
+
+---+++ Load the something????
+   * Request: GET http://mirgo2.co.uk/bridgesolver/uploads/5af988c403f778.07846477.pbn?_=1526302919135
+   * Response: JSBQQk4gMi4xDQolIEVYUE9SVA0KJUNvbnRlbnQtdHlwZTogdGV4dC94LXBibjsgY2hhcnNldD1JU08tODg1OS0xDQolQ3JlYXRvcjogQnJpZGdlIFNvbHZlciBPbmxpbmUNCltFdmVudCAiIl0NCltTaXRlICIiXQ0KW0RhdGUgIiJdDQpbQm9hcmQgIjEiXQ0KW1dlc3QgIiJdDQpbTm9ydGggIiJdDQpbRWFzdCAiIl0NCltTb3V0aCAiIl0NCltEZWFsZXIgIk4iXQ0KW1Z1bG5lcmFibGUgIkFsbCJdDQpbRGVhbCAiTjpLOTcuSzQzLjY0MzIuUVQ4IFE1Mi43NjUuS0ouNzY1NDMgQVQ4LkFRMi45ODc1LkFLOSBKNjQzLkpUOTguQVFULkoyIl0NCltTY29yaW5nICIiXQ0KW0RlY2xhcmVyICIiXQ0KW0NvbnRyYWN0ICIiXQ0KW1Jlc3VsdCAiIl0NCltEb3VibGVEdW1teVRyaWNrcyAiKioqKioqKioqKioqKioqKioqKioiXQ0KW09wdGltdW1SZXN1bHRUYWJsZSAiRGVjbGFyZXI7RGVub21pbmF0aW9uXDJSO1Jlc3VsdFwyUiJdDQpOIE5UICAwDQpOICBTICAwDQpOICBIICAwDQpOICBEICAwDQpOICBDICAwDQpTIE5UICAwDQpTICBTICAwDQpTICBIICAwDQpTICBEICAwDQpTICBDICAwDQpFIE5UICAwDQpFICBTICAwDQpFICBIICAwDQpFICBEICAwDQpFICBDICAwDQpXIE5UICAwDQpXICBTICAwDQpXICBIICAwDQpXICBEICAwDQpXICBDICAwDQpbT3B0aW11bVNjb3JlICIiXQ0KDQoNCg=
+
+%META:FORM{name="Applications.DocuTopic"}%
+%META:FIELD{name="TopicType" title="TopicType" value="DocuTopic, ApplicationTopic, WikiTopic"}%
+%META:FIELD{name="TopicTitle" title="<nop>TopicTitle" value="How to use double dummy solver"}%
+%META:FIELD{name="Summary" title="Summary" value="How to use double dummy solver through mirgo2.co.uk"}%
+%META:FIELD{name="WikiApplication" title="WikiApplication" value="BridgeApp"}%

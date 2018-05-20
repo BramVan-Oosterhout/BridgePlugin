@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="BramVanOosterhout" comment="" date="1510405316" format="1.1" reprev="9" version="9"}%
+%META:TOPICINFO{author="BramVanOosterhout" comment="" date="1526712344" format="1.1" reprev="11" version="11"}%
 %META:TOPICPARENT{name="Plugins"}%
 ---+!! Bridge Plugin
 %FORMFIELD{"Description"}%
@@ -6,16 +6,23 @@
 %TOC%
 
 ---++ Features
-The Bridge plugin supports the display of bridge games from data abouts the hands and auction stored in data fields. The plugin supports thre types of display through macros:
+The Bridge plugin supports the display of bridge games from data about the hands and auction stored in data fields. The plugin supports three types of display through macros:
+%TABLE{ tablewidth="600px" columnwidths="20%,80%" }%
 | *Macro* | *Purpose* |
 | BRIDGEHANDS | Displays the hands dealt. |
 | BRIDGEAUCTION | Displays the auction as recorded. |
 | BRIDGEPLAY | Supports the play of the hands dealt. Incomplete hands are randomly completed. |
 
-This package also includes the !BridgeApp wiki application. The bridge application supports:
-   * the creation of webs to collect bridge hands. This requires the installation of the System.WikiWorkbenchContrib and the System.CopyContrib.
-   * the creation of topics that store and display a recorded deal
-   * the upload of deals from files recorded in pbn format. This requires the installation of System.TopicImportExportPlugin.
+All data is expected in [[http://www.rpbridge.net/7a12.htm][Richard's Bridge Notation]] (RBN) which is well documented and in the public domain. Three fields are required for the plugin to be fully functional.
+%TABLE{ tablewidth="600px" columnwidths="20%,80%" }%
+| *Field* | *Purpose* |
+| Board | RBN "B" entry: Board Number  |
+| Hands | RBN "H" entry: Hands (cards held by each player) |
+| Auction | RBN "A" entry: Auction (dealer, vulnerability and (optional) call sequence) |
+
+The Bridge plugin accepts incomplete deals that have full hands missing. This is useful if you want to practice bidding. When you play these hands, the missing hands are completed randomly.
+
+This plugin supporst a wiki application, which is available separately as the BridgeAppContrib. The application requires the Wiki Workbench and other plugins and contributions. For details refer to the documentation of the BridgeAppContrib.
 
 ---++ Syntax
 ---+++ Common parameters for all macros

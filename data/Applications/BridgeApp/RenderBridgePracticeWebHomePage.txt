@@ -1,0 +1,42 @@
+%META:TOPICINFO{author="BramVanOosterhout" comment="" date="1526626223" format="1.1" reprev="2" version="2"}%
+%META:TOPICPARENT{name="TopicFunction"}%
+%TOC{depth="2"}%
+
+---++ Documentation
+%STARTSECTION{"documentation"}%
+%RED%TODO%ENDCOLOR%
+
+---+++++ Parameters
+   * ...
+
+%ENDSECTION{"documentation"}%
+
+---++ Implementation
+<verbatim class="tml">
+%STARTINCLUDE%
+%DBCALL{ "Applications/BridgeApp.BridgeHand" }%
+
+This web contains a collection of bridge hands played at various clubs. Each hand is displayed on its own page. New hands can be created one by one, using the New button. 
+
+%DATATABLE{ 
+   connector="dbcache"
+   web="%theWEB{ default="%BASEWEB%" }%"
+   form="%WEB%.BridgeHandsDataForm"
+   columns="index,TopicTitle,Dealer,OpeningBid,Declarer,Contract"
+   paging="on"
+   rows="5"
+   searching="on"
+   width="100%"
+}%
+%STOPINCLUDE%
+</verbatim>
+
+---++ Test
+%DBCALL{"%TOPIC%" theWEB="BridgePractice"}%
+
+
+%META:FORM{name="Applications.TopicFunction"}%
+%META:FIELD{name="TopicType" title="TopicType" value="TopicFunction, DocuTopic, ApplicationTopic, WikiTopic"}%
+%META:FIELD{name="TopicTitle" title="<nop>TopicTitle" value="Render bridge practice web home page"}%
+%META:FIELD{name="Summary" title="Summary" value="Render the home page for the bridge practice web"}%
+%META:FIELD{name="WikiApplication" title="WikiApplication" value="WikiWorkbench"}%

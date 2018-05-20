@@ -351,10 +351,13 @@ sub formatPlay {
 ## Ref: http://carsonfarmer.com/2012/08/cross-browser-iframe-scaling/
 ##  which recommends against zoom.
 ## Ref: https://www.w3schools.com/css/css3_2dtransforms.asp
+  my $w = int($this->{theScale}*850);
+  my $h = int($this->{theScale}*520);
+  ###  border: 1px solid black;
   my $zoomStyle = <<ENDZOOMSTYLE;
 <style>
-#wrap { width: 600px; height: 390px; padding: 0; overflow: hidden; }
-#thePlayTarget { width: 800px; height: 520px; border: 1px solid black; }
+#wrap { width: ${w}px; height: ${h}px; padding:0; overflow:hidden; }
+#thePlayTarget { width: 830px; height: 490px; }
 #thePlayTarget {  
     -ms-zoom: $this->{theScale};
     -ms-transform-origin: 0 0;
@@ -370,7 +373,7 @@ ENDZOOMSTYLE
 
 Foswiki::Func::addToZone(  'head', 'BridgePlugin_zoomStyle', $zoomStyle );
 
-  my $out = '<iframe id="thePlayTarget" width="830px" height="490px"></iframe>';
+  my $out = '<div id="wrap" ><iframe id="thePlayTarget" ></iframe></div>';
   $out .= "\n";
 
   my $playTargetScript = sprintf <<'PLAYTARGETSCRIPT', $pbnBoard;
@@ -391,13 +394,11 @@ Foswiki::Func::addToZone(  'head', 'BridgePlugin_zoomStyle', $zoomStyle );
           contentType: false,
           processData: false,
           success: function (returndata) {
-var re = new RegExp('\"(http://mirgo2.co.uk/bridgesolver/uploads/.*?.pbn)\"' +
-                       '[\\s\\S]*?' +
-                       '\"(http://dds.bridgewebs.com/.*?=)\"'   
-                      );
+var re = new RegExp('filename=\"(//mirgo2.co.uk/bridgesolver/uploads/.*?.pbn)\"'  );
+
 var myResult = returndata.match( re );
 
-document.getElementById('thePlayTarget').setAttribute( 'src', myResult[2] + myResult[1] );
+document.getElementById('thePlayTarget').setAttribute( 'src', 'http://dds.bridgewebs.com/bsol2/ddummy.htm?club=bsol_site&file=https:' + myResult[1] );
           },
           error: function () {
               alert("error in ajax form submission");
