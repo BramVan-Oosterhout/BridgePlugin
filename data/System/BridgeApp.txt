@@ -1,0 +1,63 @@
+%META:TOPICINFO{author="BramVanOosterhout" comment="" date="1526898964" format="1.1" reprev="2" version="2"}%
+%META:TOPICPARENT{name="Contribs"}%
+<!--
+One line description, required for extensions repository catalog.
+   * Set SHORTDESCRIPTION = %$SHORTDESCRIPTION%
+-->
+---+!! BridgeApp Contrib
+
+%SHORTDESCRIPTION%
+
+%TOC%
+
+---++ Features
+The BridgeApp is a wiki application to collect and display bridge hands stored in Foswiki data topics. The rendering of the displays is supported by the Bridge plugin. Navigation and  presentation details are handled by the application.
+
+A new web is created for each deployment of the application. Data entry is supported on the WebHome page and entered hands are displayed with their major characteristics. 
+
+
+
+---++ Examples - !BridgeApp
+---+++ Deploying the bridge application
+%TABLE{ dataalign="center" }%
+| *<nop>DeploymentList* | *<nop>WebHome* |
+| <img src="%ATTACHURLPATH%/DeployingTheBridgeApp.JPG" alt="DeployingTheBridgeApp.JPG" width='300' height='92' /> | <img src="%ATTACHURLPATH%/BridgePracticeHomePage.JPG" alt="BridgePracticeHomePage.JPG" width='300' height='289' /> |
+
+---+++ Loading a set of hands
+%TABLE{ dataalign="center" }%
+| *<nop>LoadMoreHands* | *Populated <nop>WebHome* |
+| <img src="%ATTACHURLPATH%/LoadMoreHands.JPG" alt="LoadMoreHands.JPG" width='300' height='241' /> | <img src="%ATTACHURLPATH%/PopulatedBridgePracticeWeb.JPG" alt="PopulatedBridgePracticeWeb.JPG" width='300' height='225' /> |
+
+---+++ Displaying a hand
+%TABLE{ dataalign="center" }%
+| *Data for board 6* | *Board 6 cards tab* |
+| <img src="%ATTACHURLPATH%/Hand6Data.JPG" alt="Hand6Data.JPG" width='300' height='101' /> | <img src="%ATTACHURLPATH%/Hand6CardsTab.JPG" alt="Hand6CardsTab.JPG" width='300' height='131' /> |
+| | |
+| * Board 6 auction tab* | *Board 6 play tab* |
+| <img src="%ATTACHURLPATH%/Hand6AuctionTab.JPG" alt="Hand6AuctionTab.JPG" width='300' height='165' /> | <img src="%ATTACHURLPATH%/Hand6PlayTab.JPG" alt="Hand6PlayTab.JPG" width='300' height='158' /> |
+
+
+
+---++ Installation
+%$INSTALL_INSTRUCTIONS%
+
+---++ Info
+
+|  Author: | BramVanOosterhout |
+|  Copyright: | &copy; %$CREATEDYEAR%, BvO, All Rights Reserved |
+|  License: | GPL ([[http://www.gnu.org/copyleft/gpl.html][GNU General Public License]]) |
+|  Dependencies: | %$DEPENDENCIES% |
+|  Version: | %$VERSION% |
+|  Release: | %$RELEASE% |
+|  Change History: | <!-- versions below in reverse order -->&nbsp; |
+|  1.0.0 (XX Mmm 20XX): | Initial version |
+|  Home: | http://foswiki.org/Extensions/%TOPIC% |
+|  Support: | http://foswiki.org/Support/%TOPIC% |
+%META:FILEATTACHMENT{name="Hand6AuctionTab.JPG" attachment="Hand6AuctionTab.JPG" attr="" comment="" date="1526898761" path="Hand6AuctionTab.JPG" size="7324" user="BramVanOosterhout" version="1"}%
+%META:FILEATTACHMENT{name="Hand6PlayTab.JPG" attachment="Hand6PlayTab.JPG" attr="" comment="" date="1526898787" path="Hand6PlayTab.JPG" size="8972" user="BramVanOosterhout" version="1"}%
+%META:FILEATTACHMENT{name="DeployingTheBridgeApp.JPG" attachment="DeployingTheBridgeApp.JPG" attr="" comment="" date="1526898808" path="DeployingTheBridgeApp.JPG" size="5981" user="BramVanOosterhout" version="1"}%
+%META:FILEATTACHMENT{name="Hand6Data.JPG" attachment="Hand6Data.JPG" attr="" comment="" date="1526898849" path="Hand6Data.JPG" size="6297" user="BramVanOosterhout" version="1"}%
+%META:FILEATTACHMENT{name="Hand6CardsTab.JPG" attachment="Hand6CardsTab.JPG" attr="" comment="" date="1526898867" path="Hand6CardsTab.JPG" size="6760" user="BramVanOosterhout" version="1"}%
+%META:FILEATTACHMENT{name="LoadMoreHands.JPG" attachment="LoadMoreHands.JPG" attr="" comment="" date="1526898892" path="LoadMoreHands.JPG" size="19389" user="BramVanOosterhout" version="1"}%
+%META:FILEATTACHMENT{name="BridgePracticeHomePage.JPG" attachment="BridgePracticeHomePage.JPG" attr="" comment="" date="1526898906" path="BridgePracticeHomePage.JPG" size="19699" user="BramVanOosterhout" version="1"}%
+%META:FILEATTACHMENT{name="PopulatedBridgePracticeWeb.JPG" attachment="PopulatedBridgePracticeWeb.JPG" attr="" comment="" date="1526898924" path="PopulatedBridgePracticeWeb.JPG" size="15646" user="BramVanOosterhout" version="1"}%

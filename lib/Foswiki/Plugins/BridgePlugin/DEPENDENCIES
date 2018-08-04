@@ -1,2 +1,1 @@
-Foswiki::Plugins::TopicImportExportPlugin,>=0,perl,Optional (supports import)
-Foswiki::Contrib::CopyContrib,>=??, perl, Optional (supports installation of BridgeApp)
+

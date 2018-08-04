@@ -1,48 +1,63 @@
 !noci
-data/Applications/BridgeApp/ApplicationLicense.txt 0644 Wiki workbench
-data/Applications/BridgeApp/ApplicationTopic.txt 0644 Wiki workbench
-data/Applications/BridgeApp/BridgeHand.txt 0644 Bridge app
-data/Applications/BridgeApp/BridgeHandsDataForm.txt 0644 Bridge app
-data/Applications/BridgeApp/BridgeHandsDataViewTemplate.txt 0644 Bridge app
-data/Applications/BridgeApp/CompleteDocumentation.txt 0644 Wiki workbench
-data/Applications/BridgeApp/DataForm.txt 0644 Wiki workbench
-data/Applications/BridgeApp/DataFormAttribute.txt 0644 Wiki workbench
-data/Applications/BridgeApp/DeploymentList.txt 0644 Wiki workbench
-data/Applications/BridgeApp/DocuTopic.txt 0644 Wiki workbench
-data/Applications/BridgeApp/RenderApplicationDeployer.txt 0644 Bridge app
-data/Applications/BridgeApp/RenderBridgeDisplay.txt 0644 Bridge app
-data/Applications/BridgeApp/RenderBridgeHandNavigator.txt 0644 Bridge app
-data/Applications/BridgeApp/RenderLoadMoreHands.txt 0644 Bridge app
-data/Applications/BridgeApp/SeedWebHome.txt 0644 Bridge app
-data/Applications/BridgeApp/TopicFunction.txt 0644 Wiki workbench
-data/Applications/BridgeApp/TopicStub.txt 0644 Wiki workbench
-data/Applications/BridgeApp/TopicTemplate.txt 0644 Wiki workbench
-data/Applications/BridgeApp/TopicType.txt 0644 Bridge app
-data/Applications/BridgeApp/TopicView.txt 0644 Wiki workbench
-data/Applications/BridgeApp/WebAtom.txt 0644 Foswiki web
-data/Applications/BridgeApp/WebChanges.txt 0644 Foswiki web
-data/Applications/BridgeApp/WebCreateNewTopic.txt 0644 Foswiki web
-data/Applications/BridgeApp/WebHome.txt 0644 Foswiki web
-data/Applications/BridgeApp/WebIndex.txt 0644 Foswiki web
-data/Applications/BridgeApp/WebLeftBar.txt 0644 Foswiki web
-data/Applications/BridgeApp/WebLexicon.txt 0644 Wiki workbench
-data/Applications/BridgeApp/WebLinks.txt 0644 Foswiki web
-data/Applications/BridgeApp/WebNotify.txt 0644 Foswiki web
-data/Applications/BridgeApp/WebPreferences.txt 0644 Foswiki web
-data/Applications/BridgeApp/WebRss.txt 0644 Foswiki web
-data/Applications/BridgeApp/WebSearch.txt 0644 Foswiki web
-data/Applications/BridgeApp/WebSearchAdvanced.txt Foswiki web
-data/Applications/BridgeApp/WebTool.txt 0644 Wiki workbench
-data/Applications/BridgeApp/WebTopicEditTemplate.txt 0644 Wiki workbench
-data/Applications/BridgeApp/WebTopicList.txt 0644 Foswiki web
-data/Applications/BridgeApp/WikiApplication.txt 0644 Bridge app
-data/Applications/BridgeApp/WikiTopic.txt 0644 Wiki workbench
-data/Sandbox/PluginTestBridgePlugin.txt 0644 Examples
+# the Plugin components
 data/System/BridgePlugin.txt 0644 Documentation page
-data/System/VarBRIDGEAUCTION.txt 0644 Tag documentation
-data/System/VarBRIDGEHANDS.txt 0644 Tag documentation
 lib/Foswiki/Plugins/BridgePlugin.pm 0444 Perl module
 lib/Foswiki/Plugins/BridgePlugin/Board.pm 0444 Perl module
-lib/Foswiki/Plugins/BridgePlugin/Config.spec 0444 Configuration
-lib/Foswiki/Plugins/BridgePlugin/PbnAgent.pm 0644 Bridge app
 pub/System/BridgePlugin/bridgeboard.gif 0644 Bridge app
+pub/System/BridgePlugin/Auction2.png 0644 Documentation graphic
+pub/System/BridgePlugin/BridgeHands.png 0644 Documentation graphic
+pub/System/BridgePlugin/Auction3.png 0644 Documentation graphic
+pub/System/BridgePlugin/Auction1.png 0644 Documentation graphic
+pub/System/BridgePlugin/BridgeHandsTable.png 0644 Documentation graphic
+pub/System/BridgePlugin/BridgePlay.JPG 0644 Documentation graphic
+# and the BridgeApp components
+data/System/BridgeApp.txt 0644 Documentation page
+data/Applications/BridgeApp/ApplicationLicense.txt 0644 Wiki workbench page
+data/Applications/BridgeApp/ApplicationTopic.txt 0644 Wiki workbench page
+data/Applications/BridgeApp/BridgeHandsDataForm.txt
+data/Applications/BridgeApp/BridgeHandsDataViewTemplate.txt
+data/Applications/BridgeApp/BridgeHand.txt
+data/Applications/BridgeApp/CompleteDocumentation.txt 0644 Wiki workbench page
+data/Applications/BridgeApp/DataFormAttribute.txt 0644 Wiki workbench page
+data/Applications/BridgeApp/DataForm.txt 0644 Wiki workbench page
+data/Applications/BridgeApp/DeploymentList.txt 0644 Wiki workbench page
+data/Applications/BridgeApp/DocuTopic.txt 0644 Wiki workbench page
+data/Applications/BridgeApp/HowToUseDoubleDummySolver.txt 0644 Bridge application page
+data/Applications/BridgeApp/RenderApplicationDeployer.txt 0644 Bridge application page
+data/Applications/BridgeApp/RenderBridgeDisplay.txt 0644 Bridge application page
+data/Applications/BridgeApp/RenderBridgeHandNavigator.txt 0644 Bridge application page
+data/Applications/BridgeApp/RenderBridgePracticeWebHomePage.txt 0644 Bridge application page
+data/Applications/BridgeApp/RenderLoadMoreHands.txt 0644 Bridge application page
+data/Applications/BridgeApp/SeedWebHome.txt 0644 Bridge application page
+data/Applications/BridgeApp/TopicFunction.txt 0644 Wiki workbench page
+data/Applications/BridgeApp/TopicStub.txt 0644 Wiki workbench page
+data/Applications/BridgeApp/TopicTemplate.txt 0644 Wiki workbench page
+data/Applications/BridgeApp/TopicType.txt 0644 Wiki workbench page
+data/Applications/BridgeApp/TopicView.txt 0644 Wiki workbench page
+data/Applications/BridgeApp/WebAtom.txt 0644 Wiki workbench page
+data/Applications/BridgeApp/WebChanges.txt 0644 Wiki workbench page
+data/Applications/BridgeApp/WebCreateNewTopic.txt 0644 Wiki workbench page
+data/Applications/BridgeApp/WebHome.txt 0644 Wiki workbench page
+data/Applications/BridgeApp/WebIndex.txt 0644 Wiki workbench page
+data/Applications/BridgeApp/WebLeftBar.txt 0644 Wiki workbench page
+data/Applications/BridgeApp/WebLexicon.txt 0644 Wiki workbench page
+data/Applications/BridgeApp/WebLinks.txt 0644 Wiki workbench page
+data/Applications/BridgeApp/WebNotify.txt 0644 Wiki workbench page
+data/Applications/BridgeApp/WebPreferences.txt 0644 Wiki workbench page
+data/Applications/BridgeApp/WebRss.txt 0644 Wiki workbench page
+data/Applications/BridgeApp/WebSearchAdvanced.txt 0644 Wiki workbench page
+data/Applications/BridgeApp/WebSearch.txt 0644 Wiki workbench page
+data/Applications/BridgeApp/WebTool.txt 0644 Wiki workbench page
+data/Applications/BridgeApp/WebTopicEditTemplate.txt 0644 Wiki workbench page
+data/Applications/BridgeApp/WebTopicList.txt 0644 Wiki workbench page
+data/Applications/BridgeApp/WikiApplication.txt 0644 Wiki workbench page
+data/Applications/BridgeApp/WikiTopic.txt 0644 Wiki workbench page
+pub/System/BridgeApp/Hand6Data.JPG 0644 Documentation graphics
+pub/System/BridgeApp/Hand6AuctionTab.JPG 0644 Documentation graphics
+pub/System/BridgeApp/Hand6CardsTab.JPG 0644 Documentation graphics
+pub/System/BridgeApp/DeployingTheBridgeApp.JPG 0644 Documentation graphics
+pub/System/BridgeApp/PopulatedBridgePracticeWeb.JPG 0644 Documentation graphics
+pub/System/BridgeApp/Bridgeplay.JPG 0644 Documentation graphics
+pub/System/BridgeApp/BridgePracticeHomePage.JPG 0644 Documentation graphics
+pub/System/BridgeApp/LoadMoreHands.JPG 0644 Documentation graphics
+pub/System/BridgeApp/Hand6PlayTab.JPG 0644 Documentation graphics

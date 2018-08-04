@@ -18,7 +18,7 @@ use warnings;
 
 use Foswiki::Func ();
 
-use Data::Dump qw(dump);
+use Data::Dump qw( dump );
 
 ###############################################################################
 sub new {
@@ -179,7 +179,7 @@ sub renderAuctionRound {
 ###############################################################################
 sub bridgePlay {
   my ($this, $params, $topicObject) = @_;
-
+  
   $this->parseParams( $params );
 
   $topicObject = $this->getTopicObject( $this->{theDataWeb}, $this->{theDataTopic} )
@@ -460,15 +460,14 @@ sub handValue {
 ###############################################################################
 sub getFieldValue {
   my ( $this, $topicObject, $fieldName ) = @_;
-
-use Try::Tiny;
   
   my $result;
-
-  try { $result =  $topicObject->get( 'FIELD', $fieldName )->{value} }
-  catch { $result =  "There is no '$fieldName' field in this topic" }; # This semi colon is REQUIRED.
-
-  return $result;
+  { local @_;
+    eval { $result =  $topicObject->get( 'FIELD', $fieldName )->{value} };
+     
+    return $result unless @_;
+  }
+  return  "There is no '$fieldName' field in this topic" ; 
 
 }
 
@@ -541,7 +540,8 @@ sub getTopicObject {
 ###############################################################################
 sub writeDebug {
   my $this = shift;
-  print STDERR $this->{className}." - $_[0]\n" if $this->{debug};
+ 
+  Foswiki::Func::writeDebug($this->{className}." - $_[0]") if $this->{debug};
 }
 
 ###############################################################################
