@@ -9,7 +9,7 @@ pub/System/BridgePlugin/BridgeHands.png 0644 Documentation graphic
 pub/System/BridgePlugin/Auction3.png 0644 Documentation graphic
 pub/System/BridgePlugin/Auction1.png 0644 Documentation graphic
 pub/System/BridgePlugin/BridgeHandsTable.png 0644 Documentation graphic
-pub/System/BridgePlugin/BridgePlay.JPG 0644 Documentation graphic
+pub/System/BridgePlugin/Bridgeplay.JPG 0644 Documentation graphic
 # and the BridgeApp components
 data/System/BridgeApp.txt 0644 Documentation page
 data/Applications/BridgeApp/ApplicationLicense.txt 0644 Wiki workbench page
