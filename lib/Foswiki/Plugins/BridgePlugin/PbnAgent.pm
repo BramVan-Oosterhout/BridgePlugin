@@ -17,92 +17,99 @@ use strict;
 use warnings;
 
 use Foswiki::Func ();
+
 #use Foswiki::Plugins::BridgePlugin::EvaluateHands;
 
 use Data::Dump qw(dump);
 
 ###############################################################################
 sub new {
-  my ($class, $agentType) = @_;
+    my ( $class, $agentType ) = @_;
 
-  my $className = $class;
-  $className =~ s/^.*:://;
+    my $className = $class;
+    $className =~ s/^.*:://;
 
-  my $this = bless({
-    className => $className,
-#    session => $session,
-#    baseWeb => $session->{webName},
-#    baseTopic => $session->{topicName},
-  }, $class);
+    my $this = bless(
+        {
+            className => $className,
 
-  return $this;
+            #    session => $session,
+            #    baseWeb => $session->{webName},
+            #    baseTopic => $session->{topicName},
+        },
+        $class
+    );
+
+    return $this;
 }
 
 ###############################################################################
 sub writeDebug {
-  my $this = shift;
-  print STDERR $this->{className}." - $_[0]\n";# if $this->{debug};
+    my $this = shift;
+    print STDERR $this->{className} . " - $_[0]\n";    # if $this->{debug};
 }
 
 ###############################################################################
 #
 # sub getCells parses the file and creates a row/column array of cells.
-sub getCells { 
-  my ( $this, $filename ) = @_;
+sub getCells {
+    my ( $this, $filename ) = @_;
 
-  my @headers = qw( TOPIC Board Hands Auction Dealer );
-  my %result = ();
-  my @cells = ();
-  my $rowNumber = 0;
-  
-  open(my $fh, '<:encoding(UTF-8)', $filename)
-    or die "Could not open file '$filename' $!";
+    my @headers   = qw( TOPIC Board Hands Auction Dealer );
+    my %result    = ();
+    my @cells     = ();
+    my $rowNumber = 0;
 
-    push( @{$cells[$rowNumber++]}, @headers );
+    open( my $fh, '<:encoding(UTF-8)', $filename )
+      or die "Could not open file '$filename' $!";
 
-  while( <$fh> ) {
-    next if m!\"\?\"!;
-    next if m!\A\s*\Z!;
+    push( @{ $cells[ $rowNumber++ ] }, @headers );
 
-    $_ = m!\[(\w+)\s+"([^"]+)"!;
+    while (<$fh>) {
+        next if m!\"\?\"!;
+        next if m!\A\s*\Z!;
 
-    if ( $1 eq 'Event' && $result{Event} ) { 
-		push( @{$cells[$rowNumber++]}, $this->pbn2rbn( \%result ) ) 
-	}
- 
-    $result{$1} = $2;
-  }
-  close $fh;
-  
-  push( @{$cells[$rowNumber]}, $this->pbn2rbn( \%result ) );
+        $_ = m!\[(\w+)\s+"([^"]+)"!;
 
-  return \@cells;
+        if ( $1 eq 'Event' && $result{Event} ) {
+            push( @{ $cells[ $rowNumber++ ] }, $this->pbn2rbn( \%result ) );
+        }
+
+        $result{$1} = $2;
+    }
+    close $fh;
+
+    push( @{ $cells[$rowNumber] }, $this->pbn2rbn( \%result ) );
+
+    return \@cells;
 }
 
 ###############################################################################
 sub pbn2rbn {
-  my ( $this, $result ) = @_;
+    my ( $this, $result ) = @_;
 
-  my %vul = ( NS => 'N',
-              EW => 'E',
-              None => 'Z',
-              All => 'B',
-            );
+    my %vul = (
+        NS   => 'N',
+        EW   => 'E',
+        None => 'Z',
+        All  => 'B',
+    );
 
-  my $topic = $result->{Event};
-  $topic =~ s![^\w\d]!!g;
-  $topic .= $result->{Board};
+    my $topic = $result->{Event};
+    $topic =~ s![^\w\d]!!g;
+    $topic .= $result->{Board};
 
-  my $board = $result->{Board};
+    my $board = $result->{Board};
 
-  my $hands = $result->{Deal};
-  $hands =~ s!10!T!g;
-  $hands =~ s! !:!g;
+    my $hands = $result->{Deal};
+    $hands =~ s!10!T!g;
+    $hands =~ s! !:!g;
 
-  my $auction = $vul{$result->{Vulnerable}} ? $vul{$result->{Vulnerable}} : '?';
-  $auction = $result->{Dealer} . $auction . ':';
+    my $auction =
+      $vul{ $result->{Vulnerable} } ? $vul{ $result->{Vulnerable} } : '?';
+    $auction = $result->{Dealer} . $auction . ':';
 
-  return ( $topic, "B $board", "H $hands", "A $auction", $result->{Dealer} );
+    return ( $topic, "B $board", "H $hands", "A $auction", $result->{Dealer} );
 }
 
 1;

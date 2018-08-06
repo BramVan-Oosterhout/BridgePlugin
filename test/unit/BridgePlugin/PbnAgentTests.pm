@@ -38,40 +38,60 @@ sub tear_down {
 
 sub test_pbnAgent_Single {
     my $this = shift;
-    
+
     my $testFile = '../../../test/single_set.pbn';
-    
-    my $agent = Foswiki::Plugins::BridgePlugin::PbnAgent->new( $foswiki);
-    
-    my $cells = $agent->getCells( $testFile );
-    
-    $this->assert_str_equals( 'B', substr($cells->[1][1],0,1), "Cell(1,1) must be a Board!" );
-    $this->assert_str_equals( 'H', substr($cells->[1][2],0,1), "Cell(1,2) must be a Hand!" );
-    $this->assert_str_equals( 'A', substr($cells->[1][3],0,1),  "Cell(1,3) must be a Auction!" );
-    $this->assert_num_equals( 4, $#{$cells->[0]}, "There must be 5 entries (0 .. 4) in the header" );
-    $this->assert_num_equals( 4, $#{$cells->[1]}, "There must be 5 entries (0 .. 4) in the data" );
-     
+
+    my $agent = Foswiki::Plugins::BridgePlugin::PbnAgent->new($foswiki);
+
+    my $cells = $agent->getCells($testFile);
+
+    $this->assert_str_equals(
+        'B',
+        substr( $cells->[1][1], 0, 1 ),
+        "Cell(1,1) must be a Board!"
+    );
+    $this->assert_str_equals(
+        'H',
+        substr( $cells->[1][2], 0, 1 ),
+        "Cell(1,2) must be a Hand!"
+    );
+    $this->assert_str_equals(
+        'A',
+        substr( $cells->[1][3], 0, 1 ),
+        "Cell(1,3) must be a Auction!"
+    );
+    $this->assert_num_equals(
+        4,
+        $#{ $cells->[0] },
+        "There must be 5 entries (0 .. 4) in the header"
+    );
+    $this->assert_num_equals(
+        4,
+        $#{ $cells->[1] },
+        "There must be 5 entries (0 .. 4) in the data"
+    );
 
 }
 
 sub test_pbnAgent_Multiple {
     my $this = shift;
-    
-    my $testFile = '../../../test/multiple_sets.pbn';
-    
-    my $agent = Foswiki::Plugins::BridgePlugin::PbnAgent->new( $foswiki);
-    
-    my $cells = $agent->getCells( $testFile );
-    
-    $this->assert_num_equals( 36, $#{$cells}, "There must be 37 rows (0 .. 36) in the data" );
 
-# check for duplicate hand records. Off by 1 errors can cause these.
-  for ( my $i = 1; $i <= $#{$cells}; $i++ ) {
-	  for( my $j = $i+1; $j <= $#{$cells}; $j++ ) {
-		  $this->assert_str_not_equals( $cells->[$i][2], $cells->[$j][2],
-		                    "Hand $i duplicates hand $j!" );
-	  }                    
-  }
+    my $testFile = '../../../test/multiple_sets.pbn';
+
+    my $agent = Foswiki::Plugins::BridgePlugin::PbnAgent->new($foswiki);
+
+    my $cells = $agent->getCells($testFile);
+
+    $this->assert_num_equals( 36, $#{$cells},
+        "There must be 37 rows (0 .. 36) in the data" );
+
+    # check for duplicate hand records. Off by 1 errors can cause these.
+    for ( my $i = 1 ; $i <= $#{$cells} ; $i++ ) {
+        for ( my $j = $i + 1 ; $j <= $#{$cells} ; $j++ ) {
+            $this->assert_str_not_equals( $cells->[$i][2], $cells->[$j][2],
+                "Hand $i duplicates hand $j!" );
+        }
+    }
 }
 
 1;
