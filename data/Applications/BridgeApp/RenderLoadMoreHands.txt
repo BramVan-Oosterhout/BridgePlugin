@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="BramVanOosterhout" comment="" date="1510204767" format="1.1" reprev="3" version="3"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1533551077" format="1.1" reprev="3" version="1"}%
 %META:TOPICPARENT{name="WebHome"}%
 ---+ Load more hands
 Hands are stored using Richard's Bridge Notation (*[[http://www.rpbridge.net/7a12.htm][rbn]]*).
