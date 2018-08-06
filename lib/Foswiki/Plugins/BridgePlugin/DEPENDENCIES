@@ -1,1 +1,2 @@
-
+Foswiki::Contrib::WikiWorkbenchContrib,>=4.00,perl,Required
+Foswiki::Contrib::CopyContrib,>=3.00,perl,Required
