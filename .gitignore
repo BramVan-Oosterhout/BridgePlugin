@@ -1,0 +1,9 @@
+*~
+*,pfv
+*.lease
+/BridgePlugin.md5
+/BridgePlugin.sha1
+/BridgePlugin.tgz
+/BridgePlugin.zip
+/BridgePlugin_installer
+/BridgePlugin_installer.pl
