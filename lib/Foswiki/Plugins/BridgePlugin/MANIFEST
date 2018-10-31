@@ -50,12 +50,19 @@ data/Applications/BridgeApp/WebTopicEditTemplate.txt 0644 Wiki workbench page
 data/Applications/BridgeApp/WebTopicList.txt 0644 Wiki workbench page
 data/Applications/BridgeApp/WikiApplication.txt 0644 Wiki workbench page
 data/Applications/BridgeApp/WikiTopic.txt 0644 Wiki workbench page
-pub/System/BridgeApp/Hand6Data.JPG 0644 Documentation graphics
-pub/System/BridgeApp/Hand6AuctionTab.JPG 0644 Documentation graphics
-pub/System/BridgeApp/Hand6CardsTab.JPG 0644 Documentation graphics
-pub/System/BridgeApp/DeployingTheBridgeApp.JPG 0644 Documentation graphics
-pub/System/BridgeApp/PopulatedBridgePracticeWeb.JPG 0644 Documentation graphics
-pub/System/BridgeApp/Bridgeplay.JPG 0644 Documentation graphics
-pub/System/BridgeApp/BridgePracticeHomePage.JPG 0644 Documentation graphics
-pub/System/BridgeApp/LoadMoreHands.JPG 0644 Documentation graphics
-pub/System/BridgeApp/Hand6PlayTab.JPG 0644 Documentation graphics
+pub/System/BridgeApp/EnteringTheHandData.png 0644 Documentation graphics
+pub/System/BridgeApp/PlayingTheHand.png 0644 Documentation graphics
+pub/System/BridgeApp/PracticeAuction1.png 0644 Documentation graphics
+pub/System/BridgeApp/Testweb3010Created.png 0644 Documentation graphics
+pub/System/BridgeApp/CreatingTheBridgeWeb.png 0644 Documentation graphics
+pub/System/BridgeApp/HomePageForTheNewWeb.png 0644 Documentation graphics
+pub/System/BridgeApp/FindingTheDeploymentList.png 0644 Documentation graphics
+pub/System/BridgeApp/PracticeAuction2.png 0644 Documentation graphics
+pub/System/BridgeApp/DisplayingTheHand.png 0644 Documentation graphics
+pub/System/BridgeApp/CreatingANewHandTopic.png 0644 Documentation graphics
+
+
+
+
+
+

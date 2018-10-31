@@ -1,63 +1,131 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1533551077" format="1.1" reprev="2" version="1"}%
-%META:TOPICPARENT{name="Contribs"}%
+%META:TOPICINFO{author="BramVanOosterhout" comment="" date="1540961683" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="WebHome"}%
 <!--
 One line description, required for extensions repository catalog.
-   * Set SHORTDESCRIPTION = %$SHORTDESCRIPTION%
+   * Set SHORTDESCRIPTION = Render bridge hands and auction from RBN
+   * Set Bg_Color = lavender 
 -->
----+!! BridgeApp Contrib
+---+!! BridgeApp 
 
 %SHORTDESCRIPTION%
 
 %TOC%
 
+<noautolink>
 ---++ Features
-The BridgeApp is a wiki application to collect and display bridge hands stored in Foswiki data topics. The rendering of the displays is supported by the Bridge plugin. Navigation and  presentation details are handled by the application.
+The BridgeApp is a wiki application to collect, display and play bridge hands stored in Foswiki data topics. The rendering of the displays is supported by the BridgePlugin. Navigation and  presentation details are handled by the application.
 
-A new web is created for each deployment of the application. Data entry is supported on the WebHome page and entered hands are displayed with their major characteristics. 
+Data entry is in the form of Richard's Bridge Notation ([[http://www.rpbridge.net/7a12.htm][RBN]]). Play is supported through the Double Dummy Solver by [[http://privat.bahnhof.se/wb758135/bridge/index.html][Bo Haglund]] as implemented on the [[https://mirgo2.co.uk/bridgesolver/][Bridge solver]] web site.
 
+A new Foswiki web is created for each deployment of the application. Data entry is supported on the !WebHome page in the new web and entered hands are displayed with their major characteristics. 
 
-
----++ Examples - !BridgeApp
+---++ Examples
 ---+++ Deploying the bridge application
-%TABLE{ dataalign="center" }%
-| *<nop>DeploymentList* | *<nop>WebHome* |
-| <img src="%ATTACHURLPATH%/DeployingTheBridgeApp.JPG" alt="DeployingTheBridgeApp.JPG" width='300' height='92' /> | <img src="%ATTACHURLPATH%/BridgePracticeHomePage.JPG" alt="BridgePracticeHomePage.JPG" width='300' height='289' /> |
+%BEGINGRID%
+%BEGINCOL{ "4" style="background-color:%Bg_Color%;"  }%
+A new web to contain the data for supported by the Bridge application is created from the DeploymentList topic in the BridgeApp.
 
----+++ Loading a set of hands
-%TABLE{ dataalign="center" }%
-| *<nop>LoadMoreHands* | *Populated <nop>WebHome* |
-| <img src="%ATTACHURLPATH%/LoadMoreHands.JPG" alt="LoadMoreHands.JPG" width='300' height='241' /> | <img src="%ATTACHURLPATH%/PopulatedBridgePracticeWeb.JPG" alt="PopulatedBridgePracticeWeb.JPG" width='300' height='225' /> |
+Click _Deploy_ in the DeploymentList, enter the name of the new Web (=Testweb301=) and click _Submit_.
 
----+++ Displaying a hand
-%TABLE{ dataalign="center" }%
-| *Data for board 6* | *Board 6 cards tab* |
-| <img src="%ATTACHURLPATH%/Hand6Data.JPG" alt="Hand6Data.JPG" width='300' height='101' /> | <img src="%ATTACHURLPATH%/Hand6CardsTab.JPG" alt="Hand6CardsTab.JPG" width='300' height='131' /> |
-| | |
-| * Board 6 auction tab* | *Board 6 play tab* |
-| <img src="%ATTACHURLPATH%/Hand6AuctionTab.JPG" alt="Hand6AuctionTab.JPG" width='300' height='165' /> | <img src="%ATTACHURLPATH%/Hand6PlayTab.JPG" alt="Hand6PlayTab.JPG" width='300' height='158' /> |
+<center> *Creating the Bridge web* </center>
+<center> <img src="%ATTACHURLPATH%/CreatingTheBridgeWeb.png" alt="CreatingTheBridgeWeb.png" width='296' height='172' /> </center>
+Followed by:
+<center> <img src="%ATTACHURLPATH%/Testweb3010Created.png" alt="Testweb3010Created.png" width='244' height='59' /> </center>
+%BEGINCOL{ "8" }%
+<center> *Finding the DeploymentList in the BridgeApp* 
+ <img src="%ATTACHURLPATH%/FindingTheDeploymentList.png" alt="FindingTheDeploymentList.png" width='520' height='421' /></center>
+%ENDGRID%
 
+---
+---+++ Data entry and display
+%BEGINGRID%
+%BEGINCOL{ "8" }%
+<center> *The Home page of Testweb3010* </center> 
+<center> <img src="%ATTACHURLPATH%/HomePageForTheNewWeb.png" alt="HomePageForTheNewWeb.png" width='561' height='270' /> </center>
+%BEGINCOL{ "4" style="background-color:%Bg_Color%;" }%
+The home page of the Testweb3010 web has a _New hand_ button and a grid displaying the hands available in the web. Clicking _New hand_ starts the creation of a new hand. Enter the title of the hand and click _Submit_.
+<center> <img src="%ATTACHURLPATH%/CreatingANewHandTopic.png" alt="CreatingANewHandTopic.png" width='270' height='187' /> </center>
+%BEGINCOL{ "5" style="background-color:%Bg_Color%;" }%
+The empty topic displays the data entry form for the hand. 
+Enter the hand in [[http://www.rpbridge.net/7a12.htm][Richard's Bridge notation]] and save the topic.
+The hand is displayed in the cards tab.
 
+<center> *Cards tab* </center>
+<center><img src="%ATTACHURLPATH%/DisplayingTheHand.png" alt="DisplayingTheHand.png" width='300' height='216' /></center>
+
+The cards tab displays the hands entered and and displays the High Card Points  in the final row.
+
+The remaining tabs are presented in the next section. 
+%BEGINCOL{ "7" }%
+<center> <img src="%ATTACHURLPATH%/EnteringTheHandData.png" alt="EnteringTheHandData.png" width='421' height='493' /> </center>
+%ENDGRID%
+
+---
+---+++ Using the display
+---++++ Bid practice
+%BEGINGRID%
+%BEGINCOL{ "6" style="background-color:%Bg_Color%;" }%
+Selecting the Practice the auction tab shows the hands dealt and, if the Auction has been entered, an opportunity to test your bidding against the entered bids. Decide what you would bid and click the _BID_ link. 
+<center> *Starting the practice* </center>
+<center><img src="%ATTACHURLPATH%/PracticeAuction1.png" alt="PracticeAuction1.png" width='314' height='310' /></center>
+%BEGINCOL{ "6" }%
+The bidding sequence will be revealed and you have to decide your next bid.
+<center> *Decide your next bid* </center>
+<center><img src="%ATTACHURLPATH%/PracticeAuction2.png" alt="PracticeAuction2.png" width='309' height='311' /></center>
+
+The sequence stops after three consecutive passes.
+%ENDGRID%
+
+---++++ Playing the hand
+%BEGINGRID%
+%BEGINCOL{ "6" }%
+<center> *Play the hand tab* </center>
+<center><img src="%ATTACHURLPATH%/PlayingTheHand.png" alt="PlayingTheHand.png" width='362' height='277' /></center>
+%BEGINCOL{ "6" style="background-color:%Bg_Color%;" }%
+When you select the Play the hand tab, you will be shown the hand as rendered through the [[https://mirgo2.co.uk/bridgesolver/][Bridge solver]] web site. Hands that have not been entered are randomly allocated the remaining cards. Before you can play you can analyse the potential by clicking the _Analyse_ button and selecting a player and suit contract. Alternatively, as shown, you can select a player and suit directly and be allocated a contract.
+
+The default display will show the cards to play to make the contract in green. Click the card to play it. The display can be modified by setting different options.
+%ENDGRID%
 
 ---++ Installation
-%$INSTALL_INSTRUCTIONS%
+You do not need to install anything in the browser to use this extension. The following instructions are for the administrator who installs the extension on the server. 
 
+The !BridgeApp is installed with the BridgePlugin in the !Applications/BridgeApp web. 
+
+Bridge hands are stored in a regular Foswiki web. To create that web, navigate to the [[#Deploying_the_bridge_application][Applications/BridgeApp.DeploymentList]] and click _Deploy_. You will be asked for a new web name, Submit and the new web will be created. Navigate to !WebHome and enter the data for your first hand. Happy Bridging!
+
+</noautolink>
 ---++ Info
 
 |  Author: | BramVanOosterhout |
-|  Copyright: | &copy; %$CREATEDYEAR%, BvO, All Rights Reserved |
+|  Copyright: | &copy; 2018, BramVanOosterhout, All Rights Reserved |
 |  License: | GPL ([[http://www.gnu.org/copyleft/gpl.html][GNU General Public License]]) |
-|  Dependencies: | %$DEPENDENCIES% |
-|  Version: | %$VERSION% |
-|  Release: | %$RELEASE% |
+|  Dependencies: | <table border="1" class="foswikiTable"><tr><th>Name</th><th>Version</th><th>Description</th></tr><tr><td align="left">Foswiki::Contrib::WikiWorkbenchContrib</td><td align="left">&gt;=4.00</td><td align="left">Required</td></tr><tr><td align="left">Foswiki::Contrib::CopyContrib</td><td align="left">&gt;=3.00</td><td align="left">Required</td></tr></table> |
+|  Version: | 1.00 |
+|  Release: | 10 Jun 2017 |
 |  Change History: | <!-- versions below in reverse order -->&nbsp; |
-|  1.0.0 (XX Mmm 20XX): | Initial version |
+|  1.00 (31 Oct 2018): | Initial version (with BridgePlugin)|
 |  Home: | http://foswiki.org/Extensions/%TOPIC% |
 |  Support: | http://foswiki.org/Support/%TOPIC% |
-%META:FILEATTACHMENT{name="Hand6AuctionTab.JPG" attachment="Hand6AuctionTab.JPG" attr="" comment="" date="1526898761" path="Hand6AuctionTab.JPG" size="7324" user="BramVanOosterhout" version="1"}%
-%META:FILEATTACHMENT{name="Hand6PlayTab.JPG" attachment="Hand6PlayTab.JPG" attr="" comment="" date="1526898787" path="Hand6PlayTab.JPG" size="8972" user="BramVanOosterhout" version="1"}%
-%META:FILEATTACHMENT{name="DeployingTheBridgeApp.JPG" attachment="DeployingTheBridgeApp.JPG" attr="" comment="" date="1526898808" path="DeployingTheBridgeApp.JPG" size="5981" user="BramVanOosterhout" version="1"}%
-%META:FILEATTACHMENT{name="Hand6Data.JPG" attachment="Hand6Data.JPG" attr="" comment="" date="1526898849" path="Hand6Data.JPG" size="6297" user="BramVanOosterhout" version="1"}%
-%META:FILEATTACHMENT{name="Hand6CardsTab.JPG" attachment="Hand6CardsTab.JPG" attr="" comment="" date="1526898867" path="Hand6CardsTab.JPG" size="6760" user="BramVanOosterhout" version="1"}%
-%META:FILEATTACHMENT{name="LoadMoreHands.JPG" attachment="LoadMoreHands.JPG" attr="" comment="" date="1526898892" path="LoadMoreHands.JPG" size="19389" user="BramVanOosterhout" version="1"}%
-%META:FILEATTACHMENT{name="BridgePracticeHomePage.JPG" attachment="BridgePracticeHomePage.JPG" attr="" comment="" date="1526898906" path="BridgePracticeHomePage.JPG" size="19699" user="BramVanOosterhout" version="1"}%
-%META:FILEATTACHMENT{name="PopulatedBridgePracticeWeb.JPG" attachment="PopulatedBridgePracticeWeb.JPG" attr="" comment="" date="1526898924" path="PopulatedBridgePracticeWeb.JPG" size="15646" user="BramVanOosterhout" version="1"}%
+
+
+
+
+
+
+
+
+
+-- Main.BramVanOosterhout - 30 Oct 2018
+
+%META:FILEATTACHMENT{name="FindingTheDeploymentList.png" attachment="FindingTheDeploymentList.png" attr="" comment="Findinf the deployment list" date="1540877975" path="FindingTheDeploymentList.png" size="59735" user="BramVanOosterhout" version="1"}%
+%META:FILEATTACHMENT{name="CreatingTheBridgeWeb.png" attachment="CreatingTheBridgeWeb.png" attr="" comment="Creating the Bridge web" date="1540878009" path="CreatingTheBridgeWeb.png" size="9827" user="BramVanOosterhout" version="1"}%
+%META:FILEATTACHMENT{name="Testweb3010Created.png" attachment="Testweb3010Created.png" attr="" comment="Success" date="1540879492" path="Testweb3010Created.png" size="4278" user="BramVanOosterhout" version="1"}%
+%META:FILEATTACHMENT{name="HomePageForTheNewWeb.png" attachment="HomePageForTheNewWeb.png" attr="" comment="Home page for the new web" date="1540879946" path="HomePageForTheNewWeb.png" size="27537" user="BramVanOosterhout" version="1"}%
+%META:FILEATTACHMENT{name="CreatingANewHandTopic.png" attachment="CreatingANewHandTopic.png" attr="" comment="Creating a new hand topic" date="1540880874" path="CreatingANewHandTopic.png" size="8460" user="BramVanOosterhout" version="1"}%
+%META:FILEATTACHMENT{name="EnteringTheHandData.png" attachment="EnteringTheHandData.png" attr="" comment="Entering the hand data" date="1540883161" path="EnteringTheHandData.png" size="29530" user="BramVanOosterhout" version="1"}%
+%META:FILEATTACHMENT{name="DisplayingTheHand.png" attachment="DisplayingTheHand.png" attr="" comment="Displaying the hand" date="1540884515" path="DisplayingTheHand.png" size="11450" user="BramVanOosterhout" version="2"}%
+%META:FILEATTACHMENT{name="PlayingTheHand.png" attachment="PlayingTheHand.png" attr="" comment="Playing the hand" date="1540956325" path="PlayingTheHand.png" size="24137" user="BramVanOosterhout" version="5"}%
+%META:FILEATTACHMENT{name="PracticeAuction1.png" attachment="PracticeAuction1.png" attr="" comment="Practice auction 1" date="1540953109" path="PracticeAuction1.png" size="14999" user="BramVanOosterhout" version="1"}%
+%META:FILEATTACHMENT{name="PracticeAuction2.png" attachment="PracticeAuction2.png" attr="" comment="Practice Auction 2" date="1540953130" path="PracticeAuction2.png" size="15976" user="BramVanOosterhout" version="1"}%
+%META:TOPICMOVED{by="BramVanOosterhout" date="1540961683" from="Sandbox.DraftBridgeAppCopy" to="System.BridgeApp"}%

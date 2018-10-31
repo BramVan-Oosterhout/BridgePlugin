@@ -100,7 +100,7 @@ our $VERSION = '1.00';
 # It is preferred to keep this compatible with $VERSION. At some future
 # date, Foswiki will deprecate RELEASE and use the VERSION string.
 #
-our $RELEASE = '10 Jun 2017';
+our $RELEASE = '31 October 2018';
 
 # One line description of the module
 our $SHORTDESCRIPTION = 'Render bridge hands and auction from RBN';
