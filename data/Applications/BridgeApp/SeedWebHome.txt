@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="rename" date="1533551077" format="1.1" reprev="2" version="1"}%
+%META:TOPICINFO{author="BramVanOosterhout" comment="" date="1540984944" format="1.1" reprev="3" version="3"}%
 %META:TOPICPARENT{name="TopicFunction"}%
 %TOC{depth="2"}%
 
@@ -20,10 +20,11 @@ Hoe page for the bridge application
 %DBCALL{ "Applications/BridgeApp.BridgeHand" }%
 
 This web contains a collection of bridge hands played at various clubs. Each hand is displayed on its own page. New hands can be created one by one, using the _New_ button.
-
+<!--
 New hands can be uploaded as a file. A single file may contain multiple hands. 
 
 [[RenderLoadMoreHands][Upload more hands]].
+-->
 
 %DATATABLE{
   class="foswikiFlatTable foswikiStripes"

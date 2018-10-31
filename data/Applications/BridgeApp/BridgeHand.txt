@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="BramVanOosterhout" comment="" date="1533799370" format="1.1" reprev="2" version="2"}%
+%META:TOPICINFO{author="BramVanOosterhout" comment="" date="1540985362" format="1.1" reprev="2" version="5"}%
 %META:TOPICPARENT{name="TopicType"}%
 %DBCALL{"Applications.RenderTopicInstaller" TEXT="Install '%TOPIC%' TopicType" TYPE="TopicType"}%
 
@@ -12,6 +12,7 @@ Display a button to create a new Bridge hand topic.
 %STARTINCLUDE%
 %DBCALL{"Applications.RenderSimpleTopicCreator"
   FORM="%WEB%.BridgeHandsDataForm"
+  WHITEBOARD="off"
   LABEL="%MAKETEXT{"Title"}%"
   BUTTONTEXT="%MAKETEXT{"New hand"}%"
   TEXT="%MAKETEXT{"Create a new [_1]" args="%TOPIC%"}%"

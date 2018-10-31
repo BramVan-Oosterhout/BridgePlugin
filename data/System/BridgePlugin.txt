@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="BramVanOosterhout" comment="" date="1528529147" format="1.1" reprev="13" version="13"}%
+%META:TOPICINFO{author="BramVanOosterhout" comment="" date="1540983072" format="1.1" reprev="13" version="20"}%
 %META:TOPICPARENT{name="Plugins"}%
 ---+!! Bridge Plugin
 %FORMFIELD{"Description"}%
@@ -22,11 +22,11 @@ All data is expected in [[http://www.rpbridge.net/7a12.htm][Richard's Bridge Not
 
 The Bridge plugin accepts incomplete deals that have full hands missing. This is useful if you want to practice bidding. When you play these hands, the missing hands are completed randomly.
 
-This plugin supporst a wiki application, which is available separately as the BridgeAppContrib. The application requires the Wiki Workbench and other plugins and contributions. For details refer to the documentation of the BridgeAppContrib.
+This plugin supports a wiki application, which is available separately as the BridgeApp. The application requires the Wiki Workbench and other plugins and contributions. For details refer to the documentation of the BridgeApp.
 
 ---++ Syntax
 ---+++ Common parameters for all macros
-%TABLE{ tablewidth="600px" columnwidths="20%,60%,20%" }%
+%TABLE{ tablewidth=http://cdl/devwiki/bin/edit/System/BridgePlugin#save"600px" columnwidths="20%,60%,20%" }%
 | *Parameter* | *Purpose* | *Default* |
 | web |The web where the topics that contain the hand descriptions are stored. | BASEWEB |
 | topic |The topic that contains the record of the hand to be played. Format web.topic is accepted.| [BASEWEB].BASETOPIC |

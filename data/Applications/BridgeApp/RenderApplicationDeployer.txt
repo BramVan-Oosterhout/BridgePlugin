@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1533551077" format="1.1" reprev="1" version="1"}%
+%META:TOPICINFO{author="BramVanOosterhout" comment="" date="1540984478" format="1.1" reprev="1" version="3"}%
 %META:TOPICPARENT{name="TopicFunction"}%
 %DBCALL{"Applications.RenderTopicInstaller" TYPE="TopicType" PARENT="TopicType"}%
 
@@ -45,7 +45,7 @@ We will copy the following elements:
   <input type="hidden" name="onlynew" value="%switchONLYNEW{ default="off" }%" />
   <input type="hidden" name="forcenewrevision" value="%switchFORCENEWREVISION{ default="on" }%" />
   <div class="foswikiFormDescription">
-    %MAKETEXT{"Select a web in which to deploy this application."}%
+    %MAKETEXT{"Select a web in which to deploy this application."}% <br />
       <input type="text" name="destination" value="Testweb" />
   </div>
  </div>
