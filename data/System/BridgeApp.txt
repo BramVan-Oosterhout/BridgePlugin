@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="BramVanOosterhout" comment="" date="1540961683" format="1.1" reprev="1" version="1"}%
+%META:TOPICINFO{author="BramVanOosterhout" comment="" date="1541054124" format="1.1" reprev="2" version="2"}%
 %META:TOPICPARENT{name="WebHome"}%
 <!--
 One line description, required for extensions repository catalog.
@@ -23,9 +23,9 @@ A new Foswiki web is created for each deployment of the application. Data entry 
 ---+++ Deploying the bridge application
 %BEGINGRID%
 %BEGINCOL{ "4" style="background-color:%Bg_Color%;"  }%
-A new web to contain the data for supported by the Bridge application is created from the DeploymentList topic in the BridgeApp.
+A new web to contain the data supported by the Bridge application is created from the DeploymentList topic in the BridgeApp.
 
-Click _Deploy_ in the DeploymentList, enter the name of the new Web (=Testweb301=) and click _Submit_.
+Click _Deploy_ in the DeploymentList, enter the name of the new Web (=Testweb3010=) and click _Submit_.
 
 <center> *Creating the Bridge web* </center>
 <center> <img src="%ATTACHURLPATH%/CreatingTheBridgeWeb.png" alt="CreatingTheBridgeWeb.png" width='296' height='172' /> </center>
@@ -47,13 +47,13 @@ The home page of the Testweb3010 web has a _New hand_ button and a grid displayi
 <center> <img src="%ATTACHURLPATH%/CreatingANewHandTopic.png" alt="CreatingANewHandTopic.png" width='270' height='187' /> </center>
 %BEGINCOL{ "5" style="background-color:%Bg_Color%;" }%
 The empty topic displays the data entry form for the hand. 
-Enter the hand in [[http://www.rpbridge.net/7a12.htm][Richard's Bridge notation]] and save the topic.
+Enter the hand in [[http://www.rpbridge.net/7a12.htm][Richard's Bridge Notation]] and save the topic.
 The hand is displayed in the cards tab.
 
 <center> *Cards tab* </center>
 <center><img src="%ATTACHURLPATH%/DisplayingTheHand.png" alt="DisplayingTheHand.png" width='300' height='216' /></center>
 
-The cards tab displays the hands entered and and displays the High Card Points  in the final row.
+The cards tab displays the hands entered and displays the High Card Points  in the final row.
 
 The remaining tabs are presented in the next section. 
 %BEGINCOL{ "7" }%
@@ -97,8 +97,8 @@ Bridge hands are stored in a regular Foswiki web. To create that web, navigate t
 </noautolink>
 ---++ Info
 
-|  Author: | BramVanOosterhout |
-|  Copyright: | &copy; 2018, BramVanOosterhout, All Rights Reserved |
+|  Author: | Main.BramVanOosterhout |
+|  Copyright: | &copy; 2018, Main.BramVanOosterhout, All Rights Reserved |
 |  License: | GPL ([[http://www.gnu.org/copyleft/gpl.html][GNU General Public License]]) |
 |  Dependencies: | <table border="1" class="foswikiTable"><tr><th>Name</th><th>Version</th><th>Description</th></tr><tr><td align="left">Foswiki::Contrib::WikiWorkbenchContrib</td><td align="left">&gt;=4.00</td><td align="left">Required</td></tr><tr><td align="left">Foswiki::Contrib::CopyContrib</td><td align="left">&gt;=3.00</td><td align="left">Required</td></tr></table> |
 |  Version: | 1.00 |

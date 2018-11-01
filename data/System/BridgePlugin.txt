@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="BramVanOosterhout" comment="" date="1540983072" format="1.1" reprev="13" version="20"}%
+%META:TOPICINFO{author="BramVanOosterhout" comment="" date="1541053562" format="1.1" reprev="13" version="22"}%
 %META:TOPICPARENT{name="Plugins"}%
 ---+!! Bridge Plugin
 %FORMFIELD{"Description"}%
@@ -82,18 +82,18 @@ The examples below assume the following field values associated with the BASEWEB
 
 ---++ Change History
 %TABLE{columnwidths="7em" tablewidth="100%"}%
-|  | |
+| 1.00 | (31 Oct 2018) Initial release |
 
 
      
 
 %META:FORM{name="PackageForm"}%
-%META:FIELD{name="Author" title="Author" value="%25$CREATED_AUTHOR%25"}%
+%META:FIELD{name="Author" title="Author" value="BramVanOosterhout"}%
 %META:FIELD{name="Version" title="Version" value="%25$VERSION%25"}%
 %META:FIELD{name="Release" title="Release" value="%25$RELEASE%25"}%
 %META:FIELD{name="Description" title="Description" value="%25$SHORTDESCRIPTION%25"}%
 %META:FIELD{name="Repository" title="Repository" value="https://github.com/foswiki/distro"}%
-%META:FIELD{name="Copyright" title="Copyright" value="%25$CREATEDYEAR%25, %25$CREATED_AUTHOR%25, All Rights Reserved"}%
+%META:FIELD{name="Copyright" title="Copyright" value="2018, BramVanOosterhout, All Rights Reserved"}%
 %META:FIELD{name="License" title="License" value="GPL ([[http://www.gnu.org/copyleft/gpl.html][GNU General Public License]])"}%
 %META:FIELD{name="Home" title="Home" value="https://foswiki.org/Extensions/%25$ROOTMODULE%25"}%
 %META:FIELD{name="Support" title="Support" value="https://foswiki.org/Support/%25$ROOTMODULE%25"}%
@@ -104,11 +104,3 @@ The examples below assume the following field values associated with the BASEWEB
 %META:FILEATTACHMENT{name="Auction2.png" attachment="Auction2.png" attr="" comment="" date="1510050548" path="Auction2.png" size="3028" user="BramVanOosterhout" version="1"}%
 %META:FILEATTACHMENT{name="Auction3.png" attachment="Auction3.png" attr="" comment="" date="1510050566" path="Auction3.png" size="3340" user="BramVanOosterhout" version="1"}%
 %META:FILEATTACHMENT{name="Bridgeplay.JPG" attachment="Bridgeplay.JPG" attr="" comment="" date="1510107983" path="D:\crap\Bridgeplay.JPG" size="28041" user="BramVanOosterhout" version="1"}%
-%META:FILEATTACHMENT{name="Hand6Data.JPG" attachment="Hand6Data.JPG" attr="" comment="" date="1510401373" path="D:\crap\Hand6Data.JPG" size="28939" user="BramVanOosterhout" version="1"}%
-%META:FILEATTACHMENT{name="Hand6PlayTab.JPG" attachment="Hand6PlayTab.JPG" attr="" comment="" date="1510401390" path="D:\crap\Hand6PlayTab.JPG" size="41693" user="BramVanOosterhout" version="1"}%
-%META:FILEATTACHMENT{name="Hand6AuctionTab.JPG" attachment="Hand6AuctionTab.JPG" attr="" comment="" date="1510401405" path="D:\crap\Hand6AuctionTab.JPG" size="35449" user="BramVanOosterhout" version="1"}%
-%META:FILEATTACHMENT{name="Hand6CardsTab.JPG" attachment="Hand6CardsTab.JPG" attr="" comment="" date="1510401421" path="D:\crap\Hand6CardsTab.JPG" size="36542" user="BramVanOosterhout" version="1"}%
-%META:FILEATTACHMENT{name="PopulatedBridgePracticeWeb.JPG" attachment="PopulatedBridgePracticeWeb.JPG" attr="" comment="" date="1510401438" path="D:\crap\PopulatedBridgePracticeWeb.JPG" size="77644" user="BramVanOosterhout" version="1"}%
-%META:FILEATTACHMENT{name="LoadMoreHands.JPG" attachment="LoadMoreHands.JPG" attr="" comment="" date="1510401457" path="D:\crap\LoadMoreHands.JPG" size="109221" user="BramVanOosterhout" version="1"}%
-%META:FILEATTACHMENT{name="BridgePracticeHomePage.JPG" attachment="BridgePracticeHomePage.JPG" attr="" comment="" date="1510401479" path="D:\crap\BridgePracticeHomePage.JPG" size="64291" user="BramVanOosterhout" version="1"}%
-%META:FILEATTACHMENT{name="DeployingTheBridgeApp.JPG" attachment="DeployingTheBridgeApp.JPG" attr="" comment="" date="1510403778" path="DeployingTheBridgeApp.JPG" size="5981" user="BramVanOosterhout" version="3"}%
