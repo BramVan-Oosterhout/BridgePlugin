@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="BramVanOosterhout" comment="" date="1541053562" format="1.1" reprev="13" version="22"}%
+%META:TOPICINFO{author="BramVanOosterhout" comment="" date="1541057108" format="1.1" reprev="22" version="22"}%
 %META:TOPICPARENT{name="Plugins"}%
 ---+!! Bridge Plugin
 %FORMFIELD{"Description"}%
@@ -22,7 +22,7 @@ All data is expected in [[http://www.rpbridge.net/7a12.htm][Richard's Bridge Not
 
 The Bridge plugin accepts incomplete deals that have full hands missing. This is useful if you want to practice bidding. When you play these hands, the missing hands are completed randomly.
 
-This plugin supports a wiki application, which is available separately as the BridgeApp. The application requires the Wiki Workbench and other plugins and contributions. For details refer to the documentation of the BridgeApp.
+This plugin supports a wiki application, which is documented separately as the BridgeApp. The application requires the Wiki Workbench and other plugins and contributions. For details refer to the documentation of the BridgeApp.
 
 ---++ Syntax
 ---+++ Common parameters for all macros
